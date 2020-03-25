@@ -12,5 +12,18 @@ class PlacesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
+    func update(with place: Place) {
+        
+        placeImageView.image = UIImage(named: place.image)
+        placeNameLabel.text = place.name
+        locationLabel.text = place.location
+        typeLabel.text = place.type
+        
+        placeImageView.clipsToBounds = true
+        placeImageView.layer.cornerRadius = placeImageView.frame.size.height / 2
+    }
     
 }

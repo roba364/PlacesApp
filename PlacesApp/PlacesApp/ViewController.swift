@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     //MARK: - Properties
     
-    var places = ["DEPO", "1067", "Monkeyfood", "Beercap", "VinnieJonhs"]
+    var places = Place.randomPlaces()
     
     //MARK: - Lifecycle
     
@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+        
+        
     }
 
 
@@ -43,9 +50,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlacesTableViewCell else { fatalError() }
         
-        cell.placeImageView.image = UIImage(named: places[indexPath.row])
-        cell.placeNameLabel.text = places[indexPath.row]
-        cell.imageView?.clipsToBounds = true
+        let place = places[indexPath.row]
+        
+        cell.update(with: place)
         
         return cell
         
