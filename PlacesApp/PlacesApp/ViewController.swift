@@ -41,13 +41,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlacesTableViewCell else { fatalError() }
         
-        cell.textLabel?.text = places[indexPath.row]
-        cell.imageView?.image = UIImage(named: places[indexPath.row])
+        cell.placeImageView.image = UIImage(named: places[indexPath.row])
+        cell.placeNameLabel.text = places[indexPath.row]
+        cell.imageView?.clipsToBounds = true
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 85
     }
     
     

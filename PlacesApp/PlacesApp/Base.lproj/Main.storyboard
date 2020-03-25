@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My places-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,13 +19,38 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="74" id="gdf-bV-Pmz">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="74"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="gdf-bV-Pmz" customClass="PlacesTableViewCell" customModule="PlacesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdf-bV-Pmz" id="aSO-Y6-TZE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVT-pL-cCK">
+                                                    <rect key="frame" x="10" y="12.5" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="Rhr-Nm-gKd"/>
+                                                        <constraint firstAttribute="height" constant="60" id="T52-9l-sUe"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-Cy-4dF">
+                                                    <rect key="frame" x="80" y="32" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jqd-Cy-4dF" firstAttribute="leading" secondItem="aVT-pL-cCK" secondAttribute="trailing" constant="10" id="3Gv-cP-a8x"/>
+                                                <constraint firstItem="aVT-pL-cCK" firstAttribute="centerY" secondItem="aSO-Y6-TZE" secondAttribute="centerY" id="WMt-hF-sGd"/>
+                                                <constraint firstItem="jqd-Cy-4dF" firstAttribute="centerY" secondItem="aSO-Y6-TZE" secondAttribute="centerY" id="Zri-VK-pi3"/>
+                                                <constraint firstItem="aVT-pL-cCK" firstAttribute="leading" secondItem="aSO-Y6-TZE" secondAttribute="leading" constant="10" id="uGQ-Ot-lZP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="placeImageView" destination="aVT-pL-cCK" id="rSi-aT-esg"/>
+                                            <outlet property="placeNameLabel" destination="jqd-Cy-4dF" id="hJx-tt-6Un"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -39,14 +64,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="SBl-Xe-EyW"/>
+                    <navigationItem key="navigationItem" title="My places" id="SBl-Xe-EyW"/>
                     <connections>
                         <outlet property="tableView" destination="P3F-lj-Xp9" id="X0f-GS-Slz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="115.84821428571428"/>
+            <point key="canvasLocation" x="889.85507246376824" y="115.84821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="93p-55-ng4">
@@ -56,6 +81,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Y7-Dw-BjL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Symbol" family="Symbol" pointSize="25"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

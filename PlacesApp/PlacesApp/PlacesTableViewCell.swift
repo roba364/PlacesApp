@@ -10,5 +10,7 @@ import UIKit
 
 class PlacesTableViewCell: UITableViewCell {
 
-
+    @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var placeNameLabel: UILabel!
+    
 }
