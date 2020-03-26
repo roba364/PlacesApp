@@ -19,8 +19,20 @@ class MainViewController: UIViewController {
     
     //MARK: - Properties
     
-    var places: Results<Place>!
-    var ascendingSorting = true
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    private var places: Results<Place>!
+    private var ascendingSorting = true
+    private var filteredPlaces: Results<Place>!
+    private var searchBarIsEmpty: Bool {
+        
+        guard let text = searchController.searchBar.text else { return false }
+        
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
 
     //MARK: - Lifecycle
     
@@ -31,6 +43,13 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         
         places = realm.objects(Place.self)
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
     
     //MARK: - Actions
@@ -81,8 +100,16 @@ class MainViewController: UIViewController {
         
         if segue.identifier == "showDetailVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            print(indexPath.row)
-            let place = places[indexPath.row]
+z
+            
+            let place: Place
+            
+            if isFiltering {
+                place = filteredPlaces[indexPath.row]
+            } else {
+                place = places[indexPath.row]
+            }
+            
             let detailVC = segue.destination as! DetailTableViewController
             detailVC.currentPlace = place
         }
@@ -96,6 +123,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if isFiltering {
+            return filteredPlaces.count
+        }
         return places.isEmpty ? 0 : places.count
     }
     
@@ -103,7 +133,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlacesTableViewCell else { fatalError() }
         
-        let place = places[indexPath.row]
+        var place = Place()
+        
+        if isFiltering {
+            place = filteredPlaces[indexPath.row]
+        } else {
+            place = places[indexPath.row]
+        }
 
         cell.update(with: place)
 
@@ -130,8 +166,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         return 85
     }
+}
+
+extension MainViewController: UISearchResultsUpdating {
     
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentFor(searchController.searchBar.text!)
+    }
     
+    private func filterContentFor(_ searchText: String) {
+        
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+        
+        tableView.reloadData()
+    }
     
 }
 
