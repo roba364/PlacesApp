@@ -259,7 +259,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JeH-Q6-dvg" customClass="RatingControl" customModule="PlacesApp" customModuleProvider="target">
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JeH-Q6-dvg" customClass="RatingControl" customModule="PlacesApp" customModuleProvider="target">
                                                     <rect key="frame" x="81" y="48" width="252" height="44"/>
                                                 </stackView>
                                             </subviews>
@@ -294,6 +294,7 @@
                         <outlet property="locationTextField" destination="gpM-mx-yEF" id="H6D-uY-Cy8"/>
                         <outlet property="placeImageView" destination="nbT-FN-GNc" id="2qa-vc-OQN"/>
                         <outlet property="placeTextField" destination="Zqf-m2-hXW" id="WdI-lq-dSB"/>
+                        <outlet property="ratingControl" destination="JeH-Q6-dvg" id="93K-01-HxY"/>
                         <outlet property="saveButton" destination="meu-10-V9R" id="nGv-CR-ae5"/>
                         <outlet property="typeTextField" destination="Uh1-kK-Twt" id="S7c-2I-f0L"/>
                     </connections>

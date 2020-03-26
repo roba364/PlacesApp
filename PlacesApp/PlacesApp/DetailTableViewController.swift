@@ -17,18 +17,22 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     //MARK: - Properties
     
     var imageIsChanged = false
-    var currentPlace: Place?
+    var currentPlace: Place!
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0,
+                                                         y: 0,
+                                                         width: tableView.frame.size.width,
+                                                         height: 1))
         saveButton.isEnabled = false
         
         placeTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
@@ -66,7 +70,8 @@ class DetailTableViewController: UITableViewController {
         let newPlace = Place(name: placeName,
                              location: locationTextField.text,
                              type: typeTextField.text,
-                             imageData: imageData)
+                             imageData: imageData,
+                             rating: Double(ratingControl.rating))
         
         // check VC - add new place or edit place
         if currentPlace != nil {
@@ -76,6 +81,7 @@ class DetailTableViewController: UITableViewController {
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             
@@ -98,6 +104,7 @@ class DetailTableViewController: UITableViewController {
             placeTextField.text = currentPlace?.name
             locationTextField.text = currentPlace?.location
             typeTextField.text = currentPlace?.type
+            ratingControl.rating = Int(currentPlace.rating)
         }
     }
     
