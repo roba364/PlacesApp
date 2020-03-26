@@ -29,9 +29,13 @@ class ViewController: UIViewController {
     
     //MARK: - Actions
     
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
+        guard let newPlaceVC = segue.source as? DetailTableViewController else { return }
         
+        newPlaceVC.saveNewPlace()
+        places.append(newPlaceVC.newPlace!)
+        tableView.reloadData()
     }
 
 

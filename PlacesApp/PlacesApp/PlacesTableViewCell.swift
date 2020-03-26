@@ -17,7 +17,12 @@ class PlacesTableViewCell: UITableViewCell {
     
     func update(with place: Place) {
         
-        placeImageView.image = UIImage(named: place.image)
+        if place.image == nil {
+            placeImageView.image = UIImage(named: place.placeImage!)
+        } else {
+            placeImageView.image = place.image
+        }
+        
         placeNameLabel.text = place.name
         locationLabel.text = place.location
         typeLabel.text = place.type

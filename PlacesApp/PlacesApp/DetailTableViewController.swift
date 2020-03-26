@@ -9,82 +9,150 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
+    
+    //MARK: - Outlets
 
+    @IBOutlet weak var placeImageView: UIImageView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var typeTextField: UITextField!
+    
+    //MARK: - Properties
+    
+    var newPlace: Place?
+    var imageIsChanged = false
+    
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.tableFooterView = UIView()
+        saveButton.isEnabled = false
+        
+        nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
+    
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    //MARK: - Actions
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    @IBAction func cancelButtonClicked(_ sender: Any) {
+        
+        dismiss(animated: true)
     }
+    
+    //MARK: - Helper functions
+    
+    func saveNewPlace() {
+        
+        var image: UIImage?
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if imageIsChanged {
+            image = placeImageView.image
+        } else {
+            image = UIImage(named: "imagePlaceholder")
+        }
+        
+        newPlace = Place(name: nameTextField.text!,
+                         location: locationTextField.text!,
+                         type: typeTextField.text!,
+                         image: placeImageView.image,
+                         placeImage: nil)
     }
-    */
+    
+    
+    //MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            
+            let cameraIcon = UIImage(named: "camera")
+            let photoIcon = UIImage(named: "photo")
+            
+            let actionSheet = UIAlertController(title: nil,
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] (_) in
+                
+                guard let self = self else { return }
+                
+                self.chooseImagePicker(source: .camera)
+            }
+            cameraAction.setValue(cameraIcon, forKey: "image")
+            cameraAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            let photoAction = UIAlertAction(title: "Photo", style: .default) { [weak self] (_) in
+                
+                guard let self = self else { return }
+                
+                self.chooseImagePicker(source: .photoLibrary)
+                
+            }
+            photoAction.setValue(photoIcon, forKey: "image")
+            photoAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            actionSheet.addAction(cameraAction)
+            actionSheet.addAction(photoAction)
+            actionSheet.addAction(cancelAction)
+            
+            present(actionSheet, animated: true)
+        }
+    }
+    
+    
+    
+}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+    //MARK: - Textfield delegate
+
+extension DetailTableViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    @objc private func textFieldChanged() {
+        
+        if nameTextField.text?.isEmpty == false {
+            
+            saveButton.isEnabled = true
+        } else {
+            
+            saveButton.isEnabled = false
+        }
     }
-    */
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    //MARK: - UIImagePicker
 
+extension DetailTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            present(imagePicker, animated: true)
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        placeImageView.image = info[.editedImage] as? UIImage
+        placeImageView.contentMode = .scaleAspectFill
+        placeImageView.clipsToBounds = true
+        imageIsChanged = true
+        dismiss(animated: true)
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

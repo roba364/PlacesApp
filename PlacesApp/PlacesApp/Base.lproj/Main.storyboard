@@ -105,14 +105,15 @@
             </objects>
             <point key="canvasLocation" x="889.85507246376824" y="115.84821428571428"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Detail Table View Controller-->
         <scene sceneID="hCg-IF-yiu">
             <objects>
-                <tableViewController id="nMf-eI-GnM" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="J2a-XH-UUY">
+                <tableViewController id="nMf-eI-GnM" customClass="DetailTableViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="J2a-XH-UUY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <inset key="separatorInset" minX="35" minY="0.0" maxX="35" maxY="0.0"/>
                         <sections>
                             <tableViewSection id="qK0-zc-7Bl">
                                 <cells>
@@ -135,7 +136,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Vbw-Ug-eg2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="70" id="Vbw-Ug-eg2">
                                         <rect key="frame" x="0.0" y="278" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vbw-Ug-eg2" id="3Jh-rO-hqJ">
@@ -153,8 +154,11 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zqf-m2-hXW">
                                                             <rect key="frame" x="86.5" y="0.0" width="247.5" height="34"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="nMf-eI-GnM" id="r8i-L0-7sr"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -166,7 +170,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="um4-JC-2CS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="70" id="um4-JC-2CS">
                                         <rect key="frame" x="0.0" y="348" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="um4-JC-2CS" id="V2I-Vw-gFq">
@@ -184,8 +188,11 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gpM-mx-yEF">
                                                             <rect key="frame" x="87.5" y="0.0" width="246.5" height="34"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="nMf-eI-GnM" id="JU6-Vv-waM"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -197,7 +204,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="OET-bT-qE2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="70" id="OET-bT-qE2">
                                         <rect key="frame" x="0.0" y="418" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OET-bT-qE2" id="C6p-nh-o1l">
@@ -215,8 +222,11 @@
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uh1-kK-Twt">
                                                             <rect key="frame" x="85.5" y="0.0" width="248.5" height="34"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="nMf-eI-GnM" id="AuY-Y3-IVZ"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -239,11 +249,23 @@
                     <navigationItem key="navigationItem" id="Jq1-rv-ueT">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" style="done" id="hb3-8x-rTx">
                             <connections>
-                                <segue destination="haK-m5-9Fn" kind="unwind" unwindAction="cancelAction:" id="NwW-xT-NAe"/>
+                                <action selector="cancelButtonClicked:" destination="nMf-eI-GnM" id="bXE-7O-lbJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="meu-10-V9R"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="meu-10-V9R">
+                            <connections>
+                                <action selector="saveButtonClicked:" destination="nMf-eI-GnM" id="XQG-rp-zHH"/>
+                                <segue destination="haK-m5-9Fn" kind="unwind" unwindAction="unwindSegue:" id="Xpd-iq-bWb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="locationTextField" destination="gpM-mx-yEF" id="H6D-uY-Cy8"/>
+                        <outlet property="nameTextField" destination="Zqf-m2-hXW" id="WdI-lq-dSB"/>
+                        <outlet property="placeImageView" destination="nbT-FN-GNc" id="2qa-vc-OQN"/>
+                        <outlet property="saveButton" destination="meu-10-V9R" id="nGv-CR-ae5"/>
+                        <outlet property="typeTextField" destination="Uh1-kK-Twt" id="S7c-2I-f0L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QmH-YT-BSJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="haK-m5-9Fn" userLabel="Exit" sceneMemberID="exit"/>
