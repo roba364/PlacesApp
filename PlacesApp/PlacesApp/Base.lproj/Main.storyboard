@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P3F-lj-Xp9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="gdf-bV-Pmz" customClass="PlacesTableViewCell" customModule="PlacesApp" customModuleProvider="target">
@@ -36,19 +36,19 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dEt-mZ-282">
                                                     <rect key="frame" x="85" y="13.5" width="59" height="58.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-Cy-4dF">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqd-Cy-4dF">
                                                             <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-83-fHi">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6e-83-fHi">
                                                             <rect key="frame" x="0.0" y="22.5" width="59" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-NJ-anh">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWb-NJ-anh">
                                                             <rect key="frame" x="0.0" y="42.5" width="59" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
@@ -74,17 +74,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mlm-ha-i4c">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Date"/>
+                                    <segment title="Name"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchSegmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="8a2-Ya-M5q"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="P3F-lj-Xp9" firstAttribute="top" secondItem="Mlm-ha-i4c" secondAttribute="bottom" id="9mY-9d-xZV"/>
                             <constraint firstAttribute="bottom" secondItem="P3F-lj-Xp9" secondAttribute="bottom" id="GMS-fC-kSe"/>
-                            <constraint firstItem="P3F-lj-Xp9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GpE-Gz-JPX"/>
+                            <constraint firstItem="Mlm-ha-i4c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WBP-qS-Rnf"/>
                             <constraint firstItem="P3F-lj-Xp9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Zxk-jg-3eP"/>
                             <constraint firstItem="P3F-lj-Xp9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dEq-Nu-bZs"/>
+                            <constraint firstItem="Mlm-ha-i4c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fuH-Q0-r4L"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mlm-ha-i4c" secondAttribute="trailing" id="qQy-m9-sDx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My places" id="SBl-Xe-EyW">
+                        <barButtonItem key="leftBarButtonItem" image="AZ" id="ZVJ-Gr-7Jj">
+                            <connections>
+                                <action selector="reversedSorting:" destination="BYZ-38-t0r" id="rVn-2W-GPA"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="xEr-oC-znZ">
                             <connections>
                                 <segue destination="4Vw-Ts-D2j" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="E8t-bM-EE6"/>
@@ -92,16 +110,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedButtonItem" destination="ZVJ-Gr-7Jj" id="Mge-fW-bQh"/>
+                        <outlet property="segmentedControl" destination="Mlm-ha-i4c" id="dAx-JX-Rxg"/>
                         <outlet property="tableView" destination="P3F-lj-Xp9" id="X0f-GS-Slz"/>
                     </connections>
                 </viewController>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BPh-z1-USL">
-                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="889.85507246376824" y="115.84821428571428"/>
@@ -314,6 +327,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AZ" width="25" height="24"/>
         <image name="empty" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>

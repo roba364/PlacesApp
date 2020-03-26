@@ -14,10 +14,13 @@ class MainViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var reversedButtonItem: UIBarButtonItem!
     
     //MARK: - Properties
     
     var places: Results<Place>!
+    var ascendingSorting = true
 
     //MARK: - Lifecycle
     
@@ -37,6 +40,38 @@ class MainViewController: UIViewController {
         guard let newPlaceVC = segue.source as? DetailTableViewController else { return }
         
         newPlaceVC.savePlace()
+        tableView.reloadData()
+    }
+    @IBAction func switchSegmentedControl(_ sender: UISegmentedControl) {
+        
+        sorting()
+    }
+    @IBAction func reversedSorting(_ sender: Any) {
+        
+        ascendingSorting.toggle()
+        
+        if ascendingSorting {
+            reversedButtonItem.image = UIImage(named: "AZ")
+        } else {
+            reversedButtonItem.image = UIImage(named: "ZA")
+        }
+        
+        sorting()
+    }
+    
+    //MARK: - Helper functions
+    
+    private func sorting() {
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+            
+        } else {
+            
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+        }
+        
         tableView.reloadData()
     }
     
