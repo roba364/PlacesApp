@@ -100,7 +100,6 @@ class MainViewController: UIViewController {
         
         if segue.identifier == "showDetailVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-z
             
             let place: Place
             

@@ -17,6 +17,7 @@
 		A46A2569242B896300EDE52F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A2568242B896300EDE52F /* Place.swift */; };
 		A46A256B242B930000EDE52F /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A256A242B930000EDE52F /* DetailTableViewController.swift */; };
 		A46A256D242CB58F00EDE52F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A256C242CB58F00EDE52F /* StorageManager.swift */; };
+		A46A256F242CE0F600EDE52F /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A256E242CE0F600EDE52F /* RatingControl.swift */; };
 		CE3FD9BB18688450DE0EA865 /* Pods_PlacesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5BFCD398DB9E13F66E147D /* Pods_PlacesApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		A46A2568242B896300EDE52F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		A46A256A242B930000EDE52F /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		A46A256C242CB58F00EDE52F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		A46A256E242CE0F600EDE52F /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		D0FF37DF08B519952FC4E0CF /* Pods-PlacesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlacesApp.release.xcconfig"; path = "Target Support Files/Pods-PlacesApp/Pods-PlacesApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 				A46A2555242B6A3000EDE52F /* Main.storyboard */,
 				A46A256C242CB58F00EDE52F /* StorageManager.swift */,
 				A46A2566242B6BEE00EDE52F /* PlacesTableViewCell.swift */,
+				A46A256E242CE0F600EDE52F /* RatingControl.swift */,
 				A46A255B242B6A3200EDE52F /* Assets.xcassets */,
 				A46A255D242B6A3200EDE52F /* LaunchScreen.storyboard */,
 				A46A2560242B6A3200EDE52F /* Info.plist */,
@@ -222,6 +225,7 @@
 				A46A2567242B6BEE00EDE52F /* PlacesTableViewCell.swift in Sources */,
 				A46A2554242B6A3000EDE52F /* MainViewController.swift in Sources */,
 				A46A256D242CB58F00EDE52F /* StorageManager.swift in Sources */,
+				A46A256F242CE0F600EDE52F /* RatingControl.swift in Sources */,
 				A46A2550242B6A3000EDE52F /* AppDelegate.swift in Sources */,
 				A46A2552242B6A3000EDE52F /* SceneDelegate.swift in Sources */,
 				A46A2569242B896300EDE52F /* Place.swift in Sources */,
