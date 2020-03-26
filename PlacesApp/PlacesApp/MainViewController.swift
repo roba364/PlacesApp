@@ -36,10 +36,22 @@ class MainViewController: UIViewController {
         
         guard let newPlaceVC = segue.source as? DetailTableViewController else { return }
         
-        newPlaceVC.saveNewPlace()
+        newPlaceVC.savePlace()
         tableView.reloadData()
     }
-
+    
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetailVC" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            print(indexPath.row)
+            let place = places[indexPath.row]
+            let detailVC = segue.destination as! DetailTableViewController
+            detailVC.currentPlace = place
+        }
+    }
 
 }
 

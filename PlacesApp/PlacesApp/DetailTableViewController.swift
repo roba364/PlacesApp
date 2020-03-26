@@ -21,6 +21,7 @@ class DetailTableViewController: UITableViewController {
     //MARK: - Properties
     
     var imageIsChanged = false
+    var currentPlace: Place?
     
     //MARK: - Lifecycle
     
@@ -32,6 +33,7 @@ class DetailTableViewController: UITableViewController {
         
         placeTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
+        setupEditScreen()
     }
     
 
@@ -47,7 +49,7 @@ class DetailTableViewController: UITableViewController {
     
     //MARK: - Helper functions
     
-    func saveNewPlace() {
+    func savePlace() {
         
         guard let placeName = placeTextField.text else { return }
 
@@ -66,7 +68,46 @@ class DetailTableViewController: UITableViewController {
                              type: typeTextField.text,
                              imageData: imageData)
         
-        StorageManager.saveObject(newPlace)
+        // check VC - add new place or edit place
+        if currentPlace != nil {
+            
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            
+            StorageManager.saveObject(newPlace)
+        }
+    }
+    
+    private func setupEditScreen() {
+         
+        if currentPlace != nil {
+            setupNavigationBar()
+            imageIsChanged = true
+            guard
+                let data = currentPlace?.imageData,
+                let image = UIImage(data: data)
+                else { return }
+            
+            placeImageView.image = image
+            placeImageView.contentMode = .scaleAspectFill
+            placeTextField.text = currentPlace?.name
+            locationTextField.text = currentPlace?.location
+            typeTextField.text = currentPlace?.type
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
         
     }
     
