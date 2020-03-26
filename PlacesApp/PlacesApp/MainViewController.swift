@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     //MARK: - Outlets
     
@@ -16,8 +17,8 @@ class ViewController: UIViewController {
     
     //MARK: - Properties
     
-    var places = Place.randomPlaces()
-    
+    var places: Results<Place>!
+
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -25,6 +26,8 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        places = realm.objects(Place.self)
     }
     
     //MARK: - Actions
@@ -34,7 +37,6 @@ class ViewController: UIViewController {
         guard let newPlaceVC = segue.source as? DetailTableViewController else { return }
         
         newPlaceVC.saveNewPlace()
-        places.append(newPlaceVC.newPlace!)
         tableView.reloadData()
     }
 
@@ -43,11 +45,11 @@ class ViewController: UIViewController {
 
     //MARK: - Extensions
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return places.count
+        return places.isEmpty ? 0 : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,9 +57,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlacesTableViewCell else { fatalError() }
         
         let place = places[indexPath.row]
-        
+
         cell.update(with: place)
-        
+
         return cell
         
     }

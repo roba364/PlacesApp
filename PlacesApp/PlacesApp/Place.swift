@@ -6,29 +6,23 @@
 //  Copyright © 2020 Sergey Borovkov. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct Place {
+class Place: Object {
     
-    var name: String
-    var location: String?
-    var type: String?
-    var image: UIImage?
-    var placeImage: String?
+    @objc dynamic var name = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String?
+    @objc dynamic var imageData: Data?
     
-    static let places = ["1067", "Monkeyfood", "DEPO", "VinnieJonhs", "Beercap"]
-    
-    static func randomPlaces() -> [Place] {
-        
-        var places = [Place]()
-        
-        for place in self.places {
-            
-            places.append(Place(name: place, location: "Minsk", type: "Restaraunt", image: nil, placeImage: place))
-            
-        }
-        
-        return places
+    convenience init(name: String,
+                     location: String?,
+                     type: String?,
+                     imageData: Data?) {
+        self.init()
+        self.name = name
+        self.location = location
+        self.type = type
+        self.imageData = imageData
     }
-    
 }

@@ -14,13 +14,12 @@ class DetailTableViewController: UITableViewController {
 
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     
     //MARK: - Properties
     
-    var newPlace: Place?
     var imageIsChanged = false
     
     //MARK: - Lifecycle
@@ -31,7 +30,8 @@ class DetailTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         
-        nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        placeTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
     }
     
 
@@ -49,6 +49,8 @@ class DetailTableViewController: UITableViewController {
     
     func saveNewPlace() {
         
+        guard let placeName = placeTextField.text else { return }
+
         var image: UIImage?
 
         if imageIsChanged {
@@ -57,11 +59,15 @@ class DetailTableViewController: UITableViewController {
             image = UIImage(named: "imagePlaceholder")
         }
         
-        newPlace = Place(name: nameTextField.text!,
-                         location: locationTextField.text!,
-                         type: typeTextField.text!,
-                         image: placeImageView.image,
-                         placeImage: nil)
+        let imageData = image?.pngData()
+        
+        let newPlace = Place(name: placeName,
+                             location: locationTextField.text,
+                             type: typeTextField.text,
+                             imageData: imageData)
+        
+        StorageManager.saveObject(newPlace)
+        
     }
     
     
@@ -121,7 +127,7 @@ extension DetailTableViewController: UITextFieldDelegate {
     
     @objc private func textFieldChanged() {
         
-        if nameTextField.text?.isEmpty == false {
+        if placeTextField.text?.isEmpty == false {
             
             saveButton.isEnabled = true
         } else {
