@@ -70,7 +70,12 @@ class DetailTableViewController: UITableViewController {
         
         guard let mapVC = segue.destination as? MapViewController else { return }
         
-        mapVC.place = currentPlace
+        if let placeName = placeTextField.text {
+            mapVC.place.name = placeName
+        }
+        mapVC.place.location = locationTextField.text
+        mapVC.place.type = typeTextField.text
+        mapVC.place.imageData = placeImageView.image?.pngData()
     }
     
     //MARK: - Helper functions
@@ -79,13 +84,7 @@ class DetailTableViewController: UITableViewController {
         
         guard let placeName = placeTextField.text else { return }
 
-        var image: UIImage?
-
-        if imageIsChanged {
-            image = placeImageView.image
-        } else {
-            image = UIImage(named: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImageView.image : UIImage(named: "imagePlaceholder")
         
         let imageData = image?.pngData()
         
