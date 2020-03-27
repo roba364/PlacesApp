@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class PlacesTableViewCell: UITableViewCell {
 
@@ -14,6 +15,11 @@ class PlacesTableViewCell: UITableViewCell {
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var cosmosView: CosmosView! {
+        didSet {
+            cosmosView.settings.updateOnTouch = false
+        }
+    }
     
     func update(with place: Place) {
         
@@ -21,6 +27,8 @@ class PlacesTableViewCell: UITableViewCell {
         placeNameLabel.text = place.name
         locationLabel.text = place.location
         typeLabel.text = place.type
+        cosmosView.settings.fillMode = .half
+        cosmosView.rating = place.rating
         
         placeImageView.clipsToBounds = true
         placeImageView.layer.cornerRadius = placeImageView.frame.size.height / 2

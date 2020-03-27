@@ -101,14 +101,8 @@ class MainViewController: UIViewController {
         if segue.identifier == "showDetailVC" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            let place: Place
-            
-            if isFiltering {
-                place = filteredPlaces[indexPath.row]
-            } else {
-                place = places[indexPath.row]
-            }
-            
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+
             let detailVC = segue.destination as! DetailTableViewController
             detailVC.currentPlace = place
         }
@@ -125,20 +119,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if isFiltering {
             return filteredPlaces.count
         }
-        return places.isEmpty ? 0 : places.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? PlacesTableViewCell else { fatalError() }
         
-        var place = Place()
-        
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+
 
         cell.update(with: place)
 

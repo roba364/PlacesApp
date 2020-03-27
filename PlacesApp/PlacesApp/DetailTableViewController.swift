@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class DetailTableViewController: UITableViewController {
     
@@ -18,11 +19,13 @@ class DetailTableViewController: UITableViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var cosmosView: CosmosView!
     
     //MARK: - Properties
     
     var imageIsChanged = false
     var currentPlace: Place!
+    var currentRating: Double = 0.0
     
     //MARK: - Lifecycle
     
@@ -34,6 +37,16 @@ class DetailTableViewController: UITableViewController {
                                                          width: tableView.frame.size.width,
                                                          height: 1))
         saveButton.isEnabled = false
+        
+        // cosmos view settings
+        
+        cosmosView.settings.fillMode = .half
+        cosmosView.didTouchCosmos = { [weak self] rating in
+            
+            guard let self = self else { return }
+            
+            self.currentRating = rating
+        }
         
         placeTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
@@ -71,7 +84,7 @@ class DetailTableViewController: UITableViewController {
                              location: locationTextField.text,
                              type: typeTextField.text,
                              imageData: imageData,
-                             rating: Double(ratingControl.rating))
+                             rating: currentRating)
         
         // check VC - add new place or edit place
         if currentPlace != nil {
@@ -104,7 +117,7 @@ class DetailTableViewController: UITableViewController {
             placeTextField.text = currentPlace?.name
             locationTextField.text = currentPlace?.location
             typeTextField.text = currentPlace?.type
-            ratingControl.rating = Int(currentPlace.rating)
+            cosmosView.rating = currentPlace.rating
         }
     }
     
@@ -115,7 +128,6 @@ class DetailTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = nil
         title = currentPlace?.name
         saveButton.isEnabled = true
-        
     }
     
     
