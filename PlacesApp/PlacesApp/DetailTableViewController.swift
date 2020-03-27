@@ -64,6 +64,15 @@ class DetailTableViewController: UITableViewController {
         dismiss(animated: true)
     }
     
+    //MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let mapVC = segue.destination as? MapViewController else { return }
+        
+        mapVC.place = currentPlace
+    }
+    
     //MARK: - Helper functions
     
     func savePlace() {
