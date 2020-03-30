@@ -107,6 +107,10 @@ class MainViewController: UIViewController {
             detailVC.currentPlace = place
         }
     }
+    
+    deinit {
+        print("deinit", MainViewController.self)
+    }
 
 }
 

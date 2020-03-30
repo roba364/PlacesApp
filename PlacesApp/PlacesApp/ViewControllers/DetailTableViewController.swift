@@ -41,9 +41,7 @@ class DetailTableViewController: UITableViewController {
         // cosmos view settings
         
         cosmosView.settings.fillMode = .half
-        cosmosView.didTouchCosmos = { [weak self] rating in
-            
-            guard let self = self else { return }
+        cosmosView.didTouchCosmos = { (rating) in
             
             self.currentRating = rating
         }
@@ -53,7 +51,6 @@ class DetailTableViewController: UITableViewController {
         setupEditScreen()
     }
     
-
     //MARK: - Actions
     
     @IBAction func saveButtonClicked(_ sender: Any) {
@@ -147,6 +144,10 @@ class DetailTableViewController: UITableViewController {
         saveButton.isEnabled = true
     }
     
+    deinit {
+        print("deinit", DetailTableViewController.self)
+    }
+    
     
     //MARK: - Table view delegate
     
@@ -160,18 +161,14 @@ class DetailTableViewController: UITableViewController {
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
-            let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] (_) in
-                
-                guard let self = self else { return }
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (_) in
                 
                 self.chooseImagePicker(source: .camera)
             }
             cameraAction.setValue(cameraIcon, forKey: "image")
             cameraAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
-            let photoAction = UIAlertAction(title: "Photo", style: .default) { [weak self] (_) in
-                
-                guard let self = self else { return }
+            let photoAction = UIAlertAction(title: "Photo", style: .default) { (_) in
                 
                 self.chooseImagePicker(source: .photoLibrary)
                 

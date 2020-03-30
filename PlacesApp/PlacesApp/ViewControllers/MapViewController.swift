@@ -39,10 +39,8 @@ class MapViewController: UIViewController {
         didSet {
             mapManager.startTrackingUserLocation(
                 for: mapView,
-                and: previousLocation) { [weak self] (currentLocation) in
+                and: previousLocation) { (currentLocation) in
                     
-                    guard let self = self else { return }
-                                                    
                 self.previousLocation = currentLocation
                                                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -77,10 +75,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func goButtonTapped(_ sender: Any) {
-        mapManager.getDirections(for: mapView) { [weak self] (location) in
-            
-            guard let self = self else { return }
-            
+        mapManager.getDirections(for: mapView) { (location) in
+  
             self.previousLocation = location
         }
     }
@@ -111,6 +107,10 @@ class MapViewController: UIViewController {
             doneButton.isHidden = true
             goButton.isHidden = false
         }
+    }
+    
+    deinit {
+        print("deinit", MapViewController.self)
     }
 }
 
@@ -151,16 +151,15 @@ extension MapViewController: MKMapViewDelegate {
         let geoCoder = CLGeocoder()
         
         if incomeSegueIdentifier == "getAddress" && previousLocation != nil {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-                guard let self = self else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+
                 self.mapManager.showUserLocation(mapView: mapView)
             }
         }
         
         geoCoder.cancelGeocode()
         
-        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
+        geoCoder.reverseGeocodeLocation(center) { (placemarks, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
