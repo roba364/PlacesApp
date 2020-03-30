@@ -68,14 +68,23 @@ class DetailTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let mapVC = segue.destination as? MapViewController else { return }
+        guard
+            let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapViewController
+            else { return }
         
-        if let placeName = placeTextField.text {
-            mapVC.place.name = placeName
+        mapVC.incomeSegueIdentifier = identifier
+        mapVC.mapViewControllerDelegate = self
+        
+        if identifier == "showMapVC" {
+            if let placeName = placeTextField.text {
+                mapVC.place.name = placeName
+            }
+            mapVC.place.location = locationTextField.text
+            mapVC.place.type = typeTextField.text
+            mapVC.place.imageData = placeImageView.image?.pngData()
         }
-        mapVC.place.location = locationTextField.text
-        mapVC.place.type = typeTextField.text
-        mapVC.place.imageData = placeImageView.image?.pngData()
+        
     }
     
     //MARK: - Helper functions
@@ -228,5 +237,13 @@ extension DetailTableViewController: UIImagePickerControllerDelegate, UINavigati
         placeImageView.clipsToBounds = true
         imageIsChanged = true
         dismiss(animated: true)
+    }
+}
+
+extension DetailTableViewController: MapViewControllerDelegate {
+    
+    func getAddress(_ address: String) {
+        
+        placeTextField.text = address
     }
 }
