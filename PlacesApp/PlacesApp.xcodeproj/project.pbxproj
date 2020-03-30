@@ -19,6 +19,7 @@
 		A46A256D242CB58F00EDE52F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A256C242CB58F00EDE52F /* StorageManager.swift */; };
 		A46A256F242CE0F600EDE52F /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A256E242CE0F600EDE52F /* RatingControl.swift */; };
 		A46A2571242E0AEF00EDE52F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A2570242E0AEF00EDE52F /* MapViewController.swift */; };
+		A46A25732432136000EDE52F /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A25722432136000EDE52F /* MapManager.swift */; };
 		CE3FD9BB18688450DE0EA865 /* Pods_PlacesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5BFCD398DB9E13F66E147D /* Pods_PlacesApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		A46A256C242CB58F00EDE52F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A46A256E242CE0F600EDE52F /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		A46A2570242E0AEF00EDE52F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A46A25722432136000EDE52F /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		D0FF37DF08B519952FC4E0CF /* Pods-PlacesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlacesApp.release.xcconfig"; path = "Target Support Files/Pods-PlacesApp/Pods-PlacesApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,20 +95,53 @@
 			isa = PBXGroup;
 			children = (
 				A46A254F242B6A3000EDE52F /* AppDelegate.swift */,
-				A46A2551242B6A3000EDE52F /* SceneDelegate.swift */,
-				A46A2568242B896300EDE52F /* Place.swift */,
-				A46A256A242B930000EDE52F /* DetailTableViewController.swift */,
-				A46A2553242B6A3000EDE52F /* MainViewController.swift */,
-				A46A2555242B6A3000EDE52F /* Main.storyboard */,
-				A46A256C242CB58F00EDE52F /* StorageManager.swift */,
-				A46A2566242B6BEE00EDE52F /* PlacesTableViewCell.swift */,
-				A46A2570242E0AEF00EDE52F /* MapViewController.swift */,
-				A46A256E242CE0F600EDE52F /* RatingControl.swift */,
 				A46A255B242B6A3200EDE52F /* Assets.xcassets */,
-				A46A255D242B6A3200EDE52F /* LaunchScreen.storyboard */,
+				A46A2551242B6A3000EDE52F /* SceneDelegate.swift */,
+				A46A2566242B6BEE00EDE52F /* PlacesTableViewCell.swift */,
 				A46A2560242B6A3200EDE52F /* Info.plist */,
+				A46A257624321DDF00EDE52F /* Services */,
+				A46A257824321E2300EDE52F /* UI */,
+				A46A257524321DCF00EDE52F /* Models */,
+				A46A257424321DAD00EDE52F /* ViewControllers */,
 			);
 			path = PlacesApp;
+			sourceTree = "<group>";
+		};
+		A46A257424321DAD00EDE52F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A46A2553242B6A3000EDE52F /* MainViewController.swift */,
+				A46A256A242B930000EDE52F /* DetailTableViewController.swift */,
+				A46A2570242E0AEF00EDE52F /* MapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A46A257524321DCF00EDE52F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A46A2568242B896300EDE52F /* Place.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A46A257624321DDF00EDE52F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A46A25722432136000EDE52F /* MapManager.swift */,
+				A46A256C242CB58F00EDE52F /* StorageManager.swift */,
+				A46A256E242CE0F600EDE52F /* RatingControl.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A46A257824321E2300EDE52F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A46A2555242B6A3000EDE52F /* Main.storyboard */,
+				A46A255D242B6A3200EDE52F /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +265,7 @@
 				A46A256D242CB58F00EDE52F /* StorageManager.swift in Sources */,
 				A46A2571242E0AEF00EDE52F /* MapViewController.swift in Sources */,
 				A46A256F242CE0F600EDE52F /* RatingControl.swift in Sources */,
+				A46A25732432136000EDE52F /* MapManager.swift in Sources */,
 				A46A2550242B6A3000EDE52F /* AppDelegate.swift in Sources */,
 				A46A2552242B6A3000EDE52F /* SceneDelegate.swift in Sources */,
 				A46A2569242B896300EDE52F /* Place.swift in Sources */,
