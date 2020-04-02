@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z6A-3I-XwW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="9dd-qP-lPp">
+            <objects>
+                <viewController id="Uaq-2d-cyb" customClass="ProfileViewController" customModule="Scramble" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VwF-T9-i4O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y5W-Ip-H6E">
+                                <rect key="frame" x="157" y="113" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="MrT-7Y-QO6"/>
+                                    <constraint firstAttribute="height" constant="100" id="wVL-be-43x"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-ea-Yq6">
+                                <rect key="frame" x="107" y="238" width="200" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="tVB-qH-gGq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y5W-Ip-H6E" firstAttribute="centerX" secondItem="VwF-T9-i4O" secondAttribute="centerX" id="0Md-ez-EOL"/>
+                            <constraint firstItem="9sc-ea-Yq6" firstAttribute="centerX" secondItem="VwF-T9-i4O" secondAttribute="centerX" id="AyA-29-C1e"/>
+                            <constraint firstItem="9sc-ea-Yq6" firstAttribute="top" secondItem="y5W-Ip-H6E" secondAttribute="bottom" constant="25" id="iYR-Zf-nRa"/>
+                            <constraint firstItem="y5W-Ip-H6E" firstAttribute="top" secondItem="dpa-Q4-HMT" secondAttribute="top" constant="25" id="riE-xn-OKc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dpa-Q4-HMT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="BMr-Zo-bps">
+                        <barButtonItem key="rightBarButtonItem" image="exit (2)" id="qxK-vJ-Uzx">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="Uaq-2d-cyb" id="WjL-4V-eEx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="9sc-ea-Yq6" id="qYN-Xh-Y2c"/>
+                        <outlet property="profileImageView" destination="y5W-Ip-H6E" id="rTB-eH-2Ua"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wFV-Jz-w7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2520.289855072464" y="1166.5178571428571"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="TlG-c0-3o8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z6A-3I-XwW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="medal (3)" id="gMe-Kt-SUh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X6V-IA-cbY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="25"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uaq-2d-cyb" kind="relationship" relationship="rootViewController" id="z0p-7w-eBT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5T-f3-yKi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610.144927536232" y="1166.5178571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="exit (2)" width="32" height="32"/>
+        <image name="medal (3)" width="32" height="32"/>
+    </resources>
+</document>

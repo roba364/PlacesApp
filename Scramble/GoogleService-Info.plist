@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>660688208840-l4evonat69kb754fpbojjlkcbko5el7n.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.660688208840-l4evonat69kb754fpbojjlkcbko5el7n</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBKN_39qVGOoAC2YiI6guPun9jQ17lOJuk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>660688208840</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.yoba364.Scramble.dev</string>
+	<key>PROJECT_ID</key>
+	<string>scramble-93a69</string>
+	<key>STORAGE_BUCKET</key>
+	<string>scramble-93a69.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:660688208840:ios:30e07c467e0d22534d36fd</string>
+	<key>DATABASE_URL</key>
+	<string>https://scramble-93a69.firebaseio.com</string>
+</dict>
+</plist>
