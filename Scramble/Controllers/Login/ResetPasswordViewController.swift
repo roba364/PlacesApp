@@ -111,4 +111,8 @@ class ResetPasswordViewController: UIViewController {
         emailContainerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 350, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 50)
         
     }
+    
+    deinit {
+        print("SignInVC deinit", SignInViewController.self)
+    }
 }

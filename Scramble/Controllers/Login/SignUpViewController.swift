@@ -229,6 +229,9 @@ class SignUpViewController: UIViewController {
         passwordContainerView.anchor(top: usernameContainerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 16, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
     }
     
+    deinit {
+        print("SignInVC deinit", SignInViewController.self)
+    }
     
 }
 

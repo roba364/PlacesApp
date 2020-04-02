@@ -280,5 +280,9 @@ class SignInViewController: UIViewController {
         
         
     }
+    
+    deinit {
+        print("SignInVC deinit", SignInViewController.self)
+    }
 
 }
