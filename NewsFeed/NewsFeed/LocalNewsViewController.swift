@@ -9,11 +9,13 @@
 import UIKit
 
 class LocalNewsViewController: UIViewController {
+    
+    var networkService = NetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        networkService.getFeed(url: LOCAL_URL)
     }
 
 }
