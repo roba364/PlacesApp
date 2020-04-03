@@ -17,6 +17,6 @@ class WorldNewsViewController: UIViewController {
 
         networkService.getFeed(url: WORLDWIDE_URL)
     }
-
-
 }
+
+
