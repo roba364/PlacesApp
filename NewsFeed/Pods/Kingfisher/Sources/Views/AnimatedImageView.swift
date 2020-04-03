@@ -44,17 +44,17 @@ public protocol AnimatedImageViewDelegate: AnyObject {
     /// - Parameters:
     ///   - imageView: The `AnimatedImageView` that is being animated.
     ///   - count: The looped count.
-    func animatedImageView(_ imageView: AnimatedImageView, didPlayAnimationLoops count: UInt)
+    func animatedImageView(_ articleImageView: AnimatedImageView, didPlayAnimationLoops count: UInt)
 
     /// Called after the `AnimatedImageView` has reached the max repeat count.
     ///
     /// - Parameter imageView: The `AnimatedImageView` that is being animated.
-    func animatedImageViewDidFinishAnimating(_ imageView: AnimatedImageView)
+    func animatedImageViewDidFinishAnimating(_ articleImageView: AnimatedImageView)
 }
 
 extension AnimatedImageViewDelegate {
-    public func animatedImageView(_ imageView: AnimatedImageView, didPlayAnimationLoops count: UInt) {}
-    public func animatedImageViewDidFinishAnimating(_ imageView: AnimatedImageView) {}
+    public func animatedImageView(_ articleImageView: AnimatedImageView, didPlayAnimationLoops count: UInt) {}
+    public func animatedImageViewDidFinishAnimating(_ articleImageView: AnimatedImageView) {}
 }
 
 #if swift(>=4.2)

@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class NetworkService {
+class NetworkManager {
     
-    var posts = [Model]()
+    var posts = [News]()
     
-    func getFeed(url: String) {
+    func getFeed(url: String, completion: @escaping ([News]) -> Void) {
         
         guard let url = URL(string: url) else { return }
         
@@ -42,10 +42,18 @@ class NetworkService {
                 let date = i.1["publishedAt"].stringValue
                 let content = i.1["content"].stringValue
                 
-                self.posts.append(Model(author: author, title: title, description: description, url: url, urlToImage: urlToImage, date: date, content: content))
+                self.posts.append(News(author: author,
+                                        title: title,
+                                        description: description,
+                                        url: url,
+                                        urlToImage: urlToImage,
+                                        date: date,
+                                        content: content))
+                
+                DispatchQueue.main.async {
+                    completion(self.posts)
+                }
             }
-            
-            print(self.posts.count)
             
         }.resume()
     }
