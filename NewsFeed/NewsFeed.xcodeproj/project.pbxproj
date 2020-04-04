@@ -21,6 +21,7 @@
 		A493767924376076000368F1 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493767824376076000368F1 /* News.swift */; };
 		A49376842437700B000368F1 /* WorldFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49376832437700B000368F1 /* WorldFeedTableViewCell.swift */; };
 		A4937686243781CF000368F1 /* DetailWorldNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937685243781CF000368F1 /* DetailWorldNewsViewController.swift */; };
+		A493768824386FF3000368F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493768724386FF3000368F1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A493767824376076000368F1 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		A49376832437700B000368F1 /* WorldFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldFeedTableViewCell.swift; sourceTree = "<group>"; };
 		A4937685243781CF000368F1 /* DetailWorldNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorldNewsViewController.swift; sourceTree = "<group>"; };
+		A493768724386FF3000368F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F43251D5979EB6D9679F699F /* Pods_NewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A4937674243750C7000368F1 /* Globals.swift */,
+				A493768724386FF3000368F1 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				A49376732437456F000368F1 /* LocalNewsViewController.swift in Sources */,
 				A49376772437556D000368F1 /* NetworkManager.swift in Sources */,
 				A49376842437700B000368F1 /* WorldFeedTableViewCell.swift in Sources */,
+				A493768824386FF3000368F1 /* Extensions.swift in Sources */,
 				A493767924376076000368F1 /* News.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

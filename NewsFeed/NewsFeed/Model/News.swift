@@ -17,5 +17,7 @@ struct News: Codable {
     var urlToImage: String?
     var date: String?
     var content: String?
+    var sourceID: String?
+    var sourceName: String?
     
 }

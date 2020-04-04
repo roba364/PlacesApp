@@ -122,10 +122,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oOq-zv-w1S"/>
                     </view>
-                    <navigationItem key="navigationItem" title="World news feed" id="OfC-PU-bgY"/>
+                    <navigationItem key="navigationItem" title="World news feed" id="OfC-PU-bgY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="at2-ya-J9i"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="epA-2f-wqn" id="upy-XA-wgn"/>
-                        <segue destination="hjE-8z-2fv" kind="presentation" identifier="toDetailWorldVC" modalPresentationStyle="fullScreen" id="LBz-En-xmv"/>
+                        <segue destination="hjE-8z-2fv" kind="show" identifier="toDetailWorldVC" id="LBz-En-xmv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-jB-5td" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -140,37 +142,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oD3-me-Dca">
-                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AXU-QW-3ge">
-                                <rect key="frame" x="107" y="94" width="200" height="200"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="8al-Lo-mWh"/>
-                                    <constraint firstAttribute="width" constant="200" id="bQ3-oS-byn"/>
+                                    <constraint firstAttribute="height" constant="250" id="kq0-QI-laC"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-8t-81K">
+                                <rect key="frame" x="20" y="358" width="56.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wls-OB-HBC">
+                                <rect key="frame" x="357" y="358" width="37" height="19.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-ct-fjX">
+                                <rect key="frame" x="20" y="397.5" width="374" height="22.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5JN-zj-tLJ">
+                                <rect key="frame" x="15" y="440" width="379" height="315.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FM7-9Y-oYq">
+                                <rect key="frame" x="20" y="775.5" width="374" height="17.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AXU-QW-3ge" firstAttribute="top" secondItem="P1h-4M-qbr" secondAttribute="top" constant="50" id="45v-iY-itJ"/>
-                            <constraint firstItem="oD3-me-Dca" firstAttribute="centerX" secondItem="hd7-0K-cZN" secondAttribute="centerX" id="CrJ-Wf-ica"/>
-                            <constraint firstItem="oD3-me-Dca" firstAttribute="centerY" secondItem="hd7-0K-cZN" secondAttribute="centerY" id="pXs-TA-lCx"/>
-                            <constraint firstItem="AXU-QW-3ge" firstAttribute="centerX" secondItem="hd7-0K-cZN" secondAttribute="centerX" id="sqT-IO-gco"/>
+                            <constraint firstItem="P1h-4M-qbr" firstAttribute="bottom" secondItem="FM7-9Y-oYq" secondAttribute="bottom" constant="20" id="0w6-69-RpH"/>
+                            <constraint firstItem="5JN-zj-tLJ" firstAttribute="leading" secondItem="P1h-4M-qbr" secondAttribute="leading" constant="15" id="Da6-Ds-YRW"/>
+                            <constraint firstItem="hHu-8t-81K" firstAttribute="leading" secondItem="P1h-4M-qbr" secondAttribute="leading" constant="20" id="Ftk-7y-oA2"/>
+                            <constraint firstItem="hHu-8t-81K" firstAttribute="top" secondItem="AXU-QW-3ge" secondAttribute="bottom" constant="20" id="Hed-ji-9W8"/>
+                            <constraint firstItem="5JN-zj-tLJ" firstAttribute="top" secondItem="Xef-ct-fjX" secondAttribute="bottom" constant="20" id="IZo-Ah-mEx"/>
+                            <constraint firstItem="Wls-OB-HBC" firstAttribute="top" secondItem="AXU-QW-3ge" secondAttribute="bottom" constant="20" id="ONa-yU-jEB"/>
+                            <constraint firstItem="Wls-OB-HBC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hHu-8t-81K" secondAttribute="trailing" constant="8" symbolic="YES" id="Oag-jD-evH"/>
+                            <constraint firstItem="P1h-4M-qbr" firstAttribute="trailing" secondItem="FM7-9Y-oYq" secondAttribute="trailing" constant="20" id="Oqp-tv-pua"/>
+                            <constraint firstItem="Xef-ct-fjX" firstAttribute="top" secondItem="hHu-8t-81K" secondAttribute="bottom" constant="20" id="Qc8-g4-wJC"/>
+                            <constraint firstItem="AXU-QW-3ge" firstAttribute="top" secondItem="P1h-4M-qbr" secondAttribute="top" id="VfY-dT-lg7"/>
+                            <constraint firstItem="Xef-ct-fjX" firstAttribute="leading" secondItem="P1h-4M-qbr" secondAttribute="leading" constant="20" id="d9f-Hq-eiD"/>
+                            <constraint firstItem="P1h-4M-qbr" firstAttribute="trailing" secondItem="Wls-OB-HBC" secondAttribute="trailing" constant="20" id="eC2-ZS-ty1"/>
+                            <constraint firstItem="FM7-9Y-oYq" firstAttribute="leading" secondItem="P1h-4M-qbr" secondAttribute="leading" constant="20" id="oUT-0x-aTR"/>
+                            <constraint firstItem="AXU-QW-3ge" firstAttribute="trailing" secondItem="P1h-4M-qbr" secondAttribute="trailing" id="qh1-tF-2gj"/>
+                            <constraint firstItem="P1h-4M-qbr" firstAttribute="trailing" secondItem="Xef-ct-fjX" secondAttribute="trailing" constant="20" id="wd8-HQ-1EL"/>
+                            <constraint firstItem="P1h-4M-qbr" firstAttribute="trailing" secondItem="5JN-zj-tLJ" secondAttribute="trailing" constant="20" id="x2S-Bu-k6V"/>
+                            <constraint firstItem="AXU-QW-3ge" firstAttribute="leading" secondItem="P1h-4M-qbr" secondAttribute="leading" id="yV2-Zh-R55"/>
+                            <constraint firstItem="FM7-9Y-oYq" firstAttribute="top" secondItem="5JN-zj-tLJ" secondAttribute="bottom" constant="20" id="ykY-e8-4oo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P1h-4M-qbr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aul-08-wqz">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="share" id="DQz-Lg-esu"/>
+                            <barButtonItem title="Item" image="emptyStar" id="vnJ-HA-hAC"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="articleImageView" destination="AXU-QW-3ge" id="9eF-Th-5hl"/>
-                        <outlet property="authorLabel" destination="oD3-me-Dca" id="nFQ-f3-tcA"/>
+                        <outlet property="dateLabel" destination="Wls-OB-HBC" id="2Ht-Eg-Cnq"/>
+                        <outlet property="descriptionTextView" destination="5JN-zj-tLJ" id="XOU-H0-fAZ"/>
+                        <outlet property="sourceNameLabel" destination="hHu-8t-81K" id="bri-kx-Y7b"/>
+                        <outlet property="titleLabel" destination="Xef-ct-fjX" id="Mpb-GC-JHO"/>
+                        <outlet property="urlLabel" destination="FM7-9Y-oYq" id="2hf-Mq-aNR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVE-js-IBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="-307"/>
+            <point key="canvasLocation" x="2186.9565217391305" y="-307.36607142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="U78-gY-GiK">
@@ -199,6 +249,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ya4-jb-fRt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="20"/>
@@ -238,4 +289,8 @@
             <point key="canvasLocation" x="372.46376811594206" y="339.50892857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="emptyStar" width="32" height="32"/>
+        <image name="share" width="32" height="32"/>
+    </resources>
 </document>

@@ -41,14 +41,9 @@ class NetworkManager {
                 let urlToImage = i.1["urlToImage"].stringValue
                 let date = i.1["publishedAt"].stringValue
                 let content = i.1["content"].stringValue
-                
-                self.posts.append(News(author: author,
-                                        title: title,
-                                        description: description,
-                                        url: url,
-                                        urlToImage: urlToImage,
-                                        date: date,
-                                        content: content))
+                let sourceID = i.1["source"]["id"].stringValue
+                let sourceName = i.1["source"]["name"].stringValue
+                self.posts.append(News(author: author, title: title, description: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
                 
                 DispatchQueue.main.async {
                     completion(self.posts)
