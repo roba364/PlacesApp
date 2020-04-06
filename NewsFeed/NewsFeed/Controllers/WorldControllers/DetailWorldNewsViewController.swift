@@ -21,6 +21,8 @@ class DetailWorldNewsViewController: UIViewController {
     //MARK: - Properties
     
     var article: News!
+    
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,15 @@ class DetailWorldNewsViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnURL(sender:)))
         urlLabel.isUserInteractionEnabled = true
         urlLabel.addGestureRecognizer(tap)
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let activityController = UIActivityViewController(activityItems: [article.url!], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+        
     }
     
     @objc func tapOnURL(sender: UITapGestureRecognizer) {

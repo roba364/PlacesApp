@@ -246,7 +246,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="oEi-6D-YCJ">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="share" id="YEl-YS-Yxu"/>
+                            <barButtonItem title="Item" image="share" id="YEl-YS-Yxu">
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="M06-Lh-cGI" id="zEo-tJ-9De"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="emptyStar" id="DsB-RL-w3M"/>
                         </rightBarButtonItems>
                     </navigationItem>

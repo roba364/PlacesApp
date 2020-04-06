@@ -22,7 +22,6 @@
 		A49376842437700B000368F1 /* WorldFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49376832437700B000368F1 /* WorldFeedTableViewCell.swift */; };
 		A4937686243781CF000368F1 /* DetailWorldNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937685243781CF000368F1 /* DetailWorldNewsViewController.swift */; };
 		A493768824386FF3000368F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493768724386FF3000368F1 /* Extensions.swift */; };
-		A493768A243B2928000368F1 /* GGOGOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937689243B2928000368F1 /* GGOGOViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +43,6 @@
 		A49376832437700B000368F1 /* WorldFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldFeedTableViewCell.swift; sourceTree = "<group>"; };
 		A4937685243781CF000368F1 /* DetailWorldNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorldNewsViewController.swift; sourceTree = "<group>"; };
 		A493768724386FF3000368F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		A4937689243B2928000368F1 /* GGOGOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GGOGOViewController.swift; sourceTree = "<group>"; };
 		F43251D5979EB6D9679F699F /* Pods_NewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -161,7 +159,6 @@
 				A49376702437455F000368F1 /* WorldNewsViewController.swift */,
 				A49376832437700B000368F1 /* WorldFeedTableViewCell.swift */,
 				A4937685243781CF000368F1 /* DetailWorldNewsViewController.swift */,
-				A4937689243B2928000368F1 /* GGOGOViewController.swift */,
 			);
 			path = WorldControllers;
 			sourceTree = "<group>";
@@ -303,7 +300,6 @@
 				A4937686243781CF000368F1 /* DetailWorldNewsViewController.swift in Sources */,
 				A493766424374361000368F1 /* NewsFeed.xcdatamodeld in Sources */,
 				A493765C24374361000368F1 /* SceneDelegate.swift in Sources */,
-				A493768A243B2928000368F1 /* GGOGOViewController.swift in Sources */,
 				A49376732437456F000368F1 /* LocalNewsViewController.swift in Sources */,
 				A49376772437556D000368F1 /* NetworkManager.swift in Sources */,
 				A49376842437700B000368F1 /* WorldFeedTableViewCell.swift in Sources */,
@@ -384,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -438,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
