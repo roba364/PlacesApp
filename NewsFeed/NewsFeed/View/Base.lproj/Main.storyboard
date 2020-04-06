@@ -127,7 +127,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="epA-2f-wqn" id="upy-XA-wgn"/>
-                        <segue destination="hjE-8z-2fv" kind="show" identifier="toDetailWorldVC" id="LBz-En-xmv"/>
+                        <segue destination="M06-Lh-cGI" kind="show" identifier="toDetailWorldVC" id="kXa-iP-YgN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-jB-5td" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,46 +135,175 @@
             <point key="canvasLocation" x="1279.7101449275362" y="-307.36607142857139"/>
         </scene>
         <!--Detail World News View Controller-->
+        <scene sceneID="blu-UM-cR4">
+            <objects>
+                <viewController id="M06-Lh-cGI" customClass="DetailWorldNewsViewController" customModule="NewsFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Q9-JE-qTe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqZ-Tv-Th0">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pOF-UQ-eV5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="750"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewh-Sz-H35">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="irx-0z-q7B">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="HrB-aI-Y87"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYg-t4-KOD">
+                                                <rect key="frame" x="0.0" y="250" width="414" height="500"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-Ne-fY8">
+                                                        <rect key="frame" x="20" y="20" width="317" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bt-He-DaH">
+                                                        <rect key="frame" x="357" y="20" width="37" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aau-Rx-eKV">
+                                                        <rect key="frame" x="20" y="59.5" width="374" height="21"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text view" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7HE-vj-zzo">
+                                                        <rect key="frame" x="15" y="100.5" width="384" height="324"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94i-SF-ohL">
+                                                        <rect key="frame" x="20" y="434.5" width="374" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="9Bt-He-DaH" firstAttribute="top" secondItem="FYg-t4-KOD" secondAttribute="top" constant="20" id="4vL-vg-b0k"/>
+                                                    <constraint firstItem="Aau-Rx-eKV" firstAttribute="top" secondItem="d1m-Ne-fY8" secondAttribute="bottom" constant="20" id="9xf-Re-gHp"/>
+                                                    <constraint firstItem="7HE-vj-zzo" firstAttribute="leading" secondItem="FYg-t4-KOD" secondAttribute="leading" constant="15" id="Bg0-qg-QCp"/>
+                                                    <constraint firstItem="9Bt-He-DaH" firstAttribute="leading" secondItem="d1m-Ne-fY8" secondAttribute="trailing" constant="20" id="DwH-D7-7pL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="94i-SF-ohL" secondAttribute="bottom" constant="48" id="Fly-Ga-RMq"/>
+                                                    <constraint firstAttribute="height" constant="500" id="KE0-6l-oBo"/>
+                                                    <constraint firstItem="94i-SF-ohL" firstAttribute="leading" secondItem="FYg-t4-KOD" secondAttribute="leading" constant="20" id="MYO-Et-fnV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Aau-Rx-eKV" secondAttribute="trailing" constant="20" id="ZrY-4j-ASb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9Bt-He-DaH" secondAttribute="trailing" constant="20" id="aRh-7l-JFm"/>
+                                                    <constraint firstItem="94i-SF-ohL" firstAttribute="top" secondItem="7HE-vj-zzo" secondAttribute="bottom" constant="10" id="drJ-Kx-Sif"/>
+                                                    <constraint firstItem="Aau-Rx-eKV" firstAttribute="leading" secondItem="FYg-t4-KOD" secondAttribute="leading" constant="20" id="eUR-lr-h18"/>
+                                                    <constraint firstItem="d1m-Ne-fY8" firstAttribute="top" secondItem="FYg-t4-KOD" secondAttribute="top" constant="20" id="gFw-P0-xKa"/>
+                                                    <constraint firstItem="d1m-Ne-fY8" firstAttribute="leading" secondItem="FYg-t4-KOD" secondAttribute="leading" constant="20" id="iin-fi-IUA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="94i-SF-ohL" secondAttribute="trailing" constant="20" id="jwo-Av-Wud"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7HE-vj-zzo" secondAttribute="trailing" constant="15" id="mQt-Dl-w5v"/>
+                                                    <constraint firstItem="7HE-vj-zzo" firstAttribute="top" secondItem="Aau-Rx-eKV" secondAttribute="bottom" constant="20" id="vvU-an-KQq"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="irx-0z-q7B" firstAttribute="leading" secondItem="pOF-UQ-eV5" secondAttribute="leading" id="4B1-lD-iMs"/>
+                                            <constraint firstItem="FYg-t4-KOD" firstAttribute="top" secondItem="irx-0z-q7B" secondAttribute="bottom" id="A3f-jf-mmE"/>
+                                            <constraint firstItem="irx-0z-q7B" firstAttribute="top" secondItem="pOF-UQ-eV5" secondAttribute="top" id="BUA-xA-i2V"/>
+                                            <constraint firstAttribute="trailing" secondItem="irx-0z-q7B" secondAttribute="trailing" id="KH5-6N-BAG"/>
+                                            <constraint firstAttribute="trailing" secondItem="FYg-t4-KOD" secondAttribute="trailing" id="XMi-Gs-HfR"/>
+                                            <constraint firstItem="FYg-t4-KOD" firstAttribute="leading" secondItem="pOF-UQ-eV5" secondAttribute="leading" id="vk6-ZD-nP7"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pOF-UQ-eV5" firstAttribute="width" secondItem="tfj-QP-doW" secondAttribute="width" id="1d4-26-UAV"/>
+                                    <constraint firstItem="pOF-UQ-eV5" firstAttribute="top" secondItem="dmX-p2-QW1" secondAttribute="top" id="8yn-5s-JQW"/>
+                                    <constraint firstItem="pOF-UQ-eV5" firstAttribute="trailing" secondItem="dmX-p2-QW1" secondAttribute="trailing" id="Iy8-qn-9gQ"/>
+                                    <constraint firstItem="pOF-UQ-eV5" firstAttribute="bottom" secondItem="dmX-p2-QW1" secondAttribute="bottom" id="f9i-ww-qYw"/>
+                                    <constraint firstItem="pOF-UQ-eV5" firstAttribute="leading" secondItem="dmX-p2-QW1" secondAttribute="leading" id="zf3-Bw-aKf"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="dmX-p2-QW1"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="tfj-QP-doW"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nqZ-Tv-Th0" firstAttribute="leading" secondItem="Aew-2a-Ceo" secondAttribute="leading" id="MTF-qj-NIj"/>
+                            <constraint firstItem="nqZ-Tv-Th0" firstAttribute="trailing" secondItem="Aew-2a-Ceo" secondAttribute="trailing" id="Nce-uR-cTg"/>
+                            <constraint firstItem="nqZ-Tv-Th0" firstAttribute="top" secondItem="Aew-2a-Ceo" secondAttribute="top" id="gpR-Ve-LA0"/>
+                            <constraint firstItem="nqZ-Tv-Th0" firstAttribute="bottom" secondItem="Aew-2a-Ceo" secondAttribute="bottom" id="uPg-9d-TDl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Aew-2a-Ceo"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oEi-6D-YCJ">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="share" id="YEl-YS-Yxu"/>
+                            <barButtonItem title="Item" image="emptyStar" id="DsB-RL-w3M"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="articleImageView" destination="irx-0z-q7B" id="7x0-wl-4dg"/>
+                        <outlet property="dateLabel" destination="9Bt-He-DaH" id="Hy4-M9-K7H"/>
+                        <outlet property="descriptionTextView" destination="7HE-vj-zzo" id="YIx-tO-DEk"/>
+                        <outlet property="sourceNameLabel" destination="d1m-Ne-fY8" id="kaP-F6-I2j"/>
+                        <outlet property="titleLabel" destination="Aau-Rx-eKV" id="wOI-zZ-k5U"/>
+                        <outlet property="urlLabel" destination="94i-SF-ohL" id="kQT-Kb-eIY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hab-cr-77D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2071.0144927536235" y="-300"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="88q-vm-wjC">
             <objects>
-                <viewController id="hjE-8z-2fv" customClass="DetailWorldNewsViewController" customModule="NewsFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hjE-8z-2fv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hd7-0K-cZN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AXU-QW-3ge">
-                                <rect key="frame" x="0.0" y="88" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="kq0-QI-laC"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHu-8t-81K">
-                                <rect key="frame" x="20" y="358" width="56.5" height="19.5"/>
+                                <rect key="frame" x="20" y="314" width="56.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wls-OB-HBC">
-                                <rect key="frame" x="357" y="358" width="37" height="19.5"/>
+                                <rect key="frame" x="357" y="314" width="37" height="19.5"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Light" family="American Typewriter" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-ct-fjX">
-                                <rect key="frame" x="20" y="397.5" width="374" height="22.5"/>
+                                <rect key="frame" x="20" y="353.5" width="374" height="22.5"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text View" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5JN-zj-tLJ">
-                                <rect key="frame" x="15" y="440" width="379" height="315.5"/>
+                                <rect key="frame" x="15" y="396" width="379" height="408.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FM7-9Y-oYq">
-                                <rect key="frame" x="20" y="775.5" width="374" height="17.5"/>
+                                <rect key="frame" x="20" y="824.5" width="374" height="17.5"/>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -220,7 +349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVE-js-IBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186.9565217391305" y="-307.36607142857139"/>
+            <point key="canvasLocation" x="2904" y="-307"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="U78-gY-GiK">
