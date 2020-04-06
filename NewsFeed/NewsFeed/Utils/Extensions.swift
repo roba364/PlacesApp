@@ -25,3 +25,4 @@ extension UINavigationBar {
         blurView.layer.zPosition = -1
     }
 }
+
