@@ -11,12 +11,15 @@ import Kingfisher
 
 class DetailWorldNewsViewController: UIViewController {
     
+    //MARK: - Outlets
+    
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var sourceNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var urlLabel: UILabel!
+    @IBOutlet weak var starButton: UIBarButtonItem!
     
     //MARK: - Properties
     
@@ -35,12 +38,14 @@ class DetailWorldNewsViewController: UIViewController {
         sourceNameLabel.text = article.sourceName
         dateLabel.text = article.date
         titleLabel.text = article.title
-        descriptionTextView.text = article.description
+        descriptionTextView.text = article.desc
         urlLabel.text = article.url
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnURL(sender:)))
         urlLabel.isUserInteractionEnabled = true
         urlLabel.addGestureRecognizer(tap)
+        
+        //MARK: - Date formatter
         
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -55,9 +60,29 @@ class DetailWorldNewsViewController: UIViewController {
         formatter.locale = .current
         
         dateLabel.text = formatter.string(from: date)
+        
+        let predicate = NSPredicate(format: "title = %@", article.title!)
+        let result = realm.objects(News.self).filter(predicate)
+        
+        if result.count > 0 {
+            starButton.image = UIImage(named: "filledStar")
+        }
+        
     }
     
     //MARK: - Actions
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
+        
+        guard let article = article else { return }
+
+        let isSaved = article.isSaved
+        article.isSaved = !isSaved
+        
+        refreshStarButton()
+        StorageManager.saveArticle(article)
+
+    }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         
@@ -75,6 +100,16 @@ class DetailWorldNewsViewController: UIViewController {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+
+    }
+    
+    //MARK: - Helper functions
+    
+    func refreshStarButton() {
+        
+        guard let article = article else { return }
+        
+        starButton.image = article.isSaved ? UIImage(named: "filledStar") : UIImage(named: "emptyStar")
 
     }
 }

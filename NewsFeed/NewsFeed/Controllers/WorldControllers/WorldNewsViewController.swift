@@ -17,6 +17,7 @@ class WorldNewsViewController: UIViewController {
     //MARK: - Properties
     
     var networkManager = NetworkManager()
+    var refreshControl: UIRefreshControl!
     
     var news = [News]()
     var selectedArticle: News?
@@ -28,6 +29,11 @@ class WorldNewsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
 
         networkManager.getFeed(url: WORLDWIDE_URL) { (news) in
             
@@ -40,6 +46,14 @@ class WorldNewsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    //MARK: - Actions
+    
+    @objc func refresh(_ sender: Any) {
+        
+        tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     //MARK: - Navigation
@@ -83,6 +97,7 @@ extension WorldNewsViewController: UITableViewDelegate, UITableViewDataSource {
         let article = news[indexPath.row]
         selectedArticle = article
         
+        tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "toDetailWorldVC", sender: nil)
     }
 }

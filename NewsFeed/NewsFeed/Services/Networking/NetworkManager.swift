@@ -42,7 +42,7 @@ class NetworkManager {
                 let content = i.1["content"].stringValue
                 let sourceID = i.1["source"]["id"].stringValue
                 let sourceName = i.1["source"]["name"].stringValue
-                self.posts.append(News(author: author, title: title, description: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
+                self.posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
                 
                 DispatchQueue.main.async {
                     completion(self.posts)

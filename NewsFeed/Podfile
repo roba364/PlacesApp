@@ -7,5 +7,5 @@ target 'NewsFeed' do
 
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Kingfisher', '~> 5.13'
-  
+  pod 'RealmSwift'
 end
