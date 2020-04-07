@@ -30,10 +30,24 @@ class DetailWorldNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+    //MARK: - Setup UI
+    
+    private func setupUI() {
+        
         self.tabBarController?.tabBar.isHidden = true
         
-        let urlImage = URL(string: article.urlToImage!)
-        articleImageView.kf.setImage(with: urlImage)
+        guard
+            let articleUrlToImage = article.urlToImage,
+            let urlImage = URL(string: articleUrlToImage)
+            else { return }
+        
+        
+        articleImageView.kf.indicatorType = .activity
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+        articleImageView.kf.setImage(with: urlImage, options: [.processor(processor)])
         
         sourceNameLabel.text = article.sourceName
         dateLabel.text = article.date
@@ -41,25 +55,26 @@ class DetailWorldNewsViewController: UIViewController {
         descriptionTextView.text = article.desc
         urlLabel.text = article.url
         
+        setupDateEUFormat()
+        setupTapGesture()
+        checkSavedArticleAndSetupStar()
+    }
+    
+    private func setupTapGesture() {
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapOnURL(sender:)))
         urlLabel.isUserInteractionEnabled = true
-        urlLabel.addGestureRecognizer(tap)
+        urlLabel.addGestureRecognizer(tap)   
+    }
+    
+    func setupDateEUFormat() {
         
-        //MARK: - Date formatter
+        guard let articleDate = article.date else { return }
         
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
-        guard let articleDate = article.date,
-              let date = formatter.date(from: articleDate)
-            else { return }
-        
-        formatter.timeZone = .current
-        formatter.dateStyle = .medium
-        formatter.locale = .current
-        
-        dateLabel.text = formatter.string(from: date)
+        dateLabel.text = updateISO8601(toString: articleDate, news: article)
+    }
+    
+    private func checkSavedArticleAndSetupStar() {
         
         let predicate = NSPredicate(format: "title = %@", article.title!)
         let result = realm.objects(News.self).filter(predicate)
@@ -67,7 +82,14 @@ class DetailWorldNewsViewController: UIViewController {
         if result.count > 0 {
             starButton.image = UIImage(named: "filledStar")
         }
+    }
+    
+    func refreshStarButton() {
         
+        guard let article = article else { return }
+        
+        starButton.image = article.isSaved ? UIImage(named: "filledStar") : UIImage(named: "emptyStar")
+
     }
     
     //MARK: - Actions
@@ -105,11 +127,5 @@ class DetailWorldNewsViewController: UIViewController {
     
     //MARK: - Helper functions
     
-    func refreshStarButton() {
-        
-        guard let article = article else { return }
-        
-        starButton.image = article.isSaved ? UIImage(named: "filledStar") : UIImage(named: "emptyStar")
-
-    }
+    
 }

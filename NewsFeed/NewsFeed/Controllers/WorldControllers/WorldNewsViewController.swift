@@ -52,7 +52,12 @@ class WorldNewsViewController: UIViewController {
     
     @objc func refresh(_ sender: Any) {
         
-        tableView.reloadData()
+        networkManager.getFeed(url: WORLDWIDE_URL) { (news) in
+            
+            self.news = news
+            self.tableView.reloadData()
+        }
+        
         refreshControl.endRefreshing()
     }
     
@@ -99,6 +104,11 @@ extension WorldNewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "toDetailWorldVC", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
     }
 }
 

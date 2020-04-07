@@ -18,6 +18,7 @@ class SavedNewsViewController: UIViewController {
     //MARK: - Properties
     
     var savedNews: Results<News> = realm.objects(News.self).filter("isSaved = true")
+    
     var selectedArticle: News?
     
     //MARK: - Lifecycle
@@ -28,6 +29,12 @@ class SavedNewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     //MARK: - Navigation
@@ -57,9 +64,9 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? SavedNewsTableViewCell else { fatalError() }
         
-        let savedArticle = savedNews[indexPath.row]
+        let article = savedNews[indexPath.row]
         
-        cell.update(cell: savedArticle)
+        cell.update(article: article)
         
         return cell
     }
@@ -73,7 +80,10 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "toDetailSavedVC", sender: nil)
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 200
+    }
     
 }
 

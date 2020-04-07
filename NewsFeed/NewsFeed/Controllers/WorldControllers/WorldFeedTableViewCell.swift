@@ -14,16 +14,30 @@ class WorldFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var inCellView: UIView!
+    @IBOutlet weak var sourceNameLabel: UILabel!
     
     func update(article: News) {
         
-        guard let urlImage = article.urlToImage else { return }
+        guard
+            let urlImage = article.urlToImage,
+            let articleDate = article.date
+        else { return }
         
         if let articleImage = URL(string: urlImage) {
-            articleImageView.kf.setImage(with: articleImage)
+            articleImageView.kf.indicatorType = .activity
+            let processor = RoundCornerImageProcessor(cornerRadius: 20)
+            articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
         }
         
+        articleImageView.layer.cornerRadius = 10
+        inCellView.layer.cornerRadius = 10
+        inCellView.layer.masksToBounds = true
+        
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.5
         titleLabel.text = article.title
-        dateLabel.text = article.date
+        dateLabel.text = updateISO8601(toString: articleDate, news: article)
+        sourceNameLabel.text = article.sourceName
     }
 }

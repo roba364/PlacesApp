@@ -7,13 +7,35 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SavedNewsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var sourceNameLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var inCellView: UIView!
     
-    func update(cell: News) {
+    func update(article: News) {
         
-        label.text = cell.sourceName
+        guard
+            let urlImage = article.urlToImage,
+            let articleDate = article.date
+        else { return }
+
+        if let articleImage = URL(string: urlImage) {
+            articleImageView.kf.indicatorType = .activity
+            let processor = RoundCornerImageProcessor(cornerRadius: 20)
+            articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
+        }
+
+        articleImageView.layer.cornerRadius = 10
+        inCellView.layer.cornerRadius = 10
+        inCellView.layer.masksToBounds = true
+
+        titleLabel.text = article.title
+        dateLabel.text = updateISO8601(toString: articleDate, news: article)
+        sourceNameLabel.text = article.sourceName
     }
 }
