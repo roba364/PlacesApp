@@ -31,6 +31,13 @@ class DetailWorldNewsViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        
+        let predicate = NSPredicate(format: "title = %@", article.title!)
+        let result = realm.objects(News.self).filter(predicate)
+        
+        if result.count > 0 {
+            starButton.image = UIImage(named: "filledStar")
+        }
     }
     
     //MARK: - Setup UI
@@ -74,9 +81,13 @@ class DetailWorldNewsViewController: UIViewController {
         dateLabel.text = updateISO8601(toString: articleDate, news: article)
     }
     
+    //MARK: - Check articles
+    
     private func checkSavedArticleAndSetupStar() {
         
-        let predicate = NSPredicate(format: "title = %@", article.title!)
+        guard let articleTitle = article.title else { return }
+        
+        let predicate = NSPredicate(format: "title = %@", articleTitle)
         let result = realm.objects(News.self).filter(predicate)
         
         if result.count > 0 {
@@ -84,26 +95,15 @@ class DetailWorldNewsViewController: UIViewController {
         }
     }
     
-    func refreshStarButton() {
-        
-        guard let article = article else { return }
-        
-        starButton.image = article.isSaved ? UIImage(named: "filledStar") : UIImage(named: "emptyStar")
-
-    }
-    
     //MARK: - Actions
     
     @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
         
         guard let article = article else { return }
-
-        let isSaved = article.isSaved
-        article.isSaved = !isSaved
         
-        refreshStarButton()
+        article.isSaved = true
         StorageManager.saveArticle(article)
-
+        
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
@@ -122,7 +122,6 @@ class DetailWorldNewsViewController: UIViewController {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
-
     }
     
     //MARK: - Helper functions

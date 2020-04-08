@@ -20,6 +20,14 @@ class StorageManager {
             realm.add(article)
         }
     }
-
+    
+    //MARK: - Delete data
+    
+    static func deleteArticle(_ article: News) {
+        
+        try! realm.write {
+            realm.delete(article)
+        }
+    }
     
 }

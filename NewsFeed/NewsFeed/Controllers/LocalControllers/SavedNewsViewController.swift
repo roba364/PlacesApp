@@ -29,12 +29,14 @@ class SavedNewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
     }
     
     //MARK: - Navigation
@@ -44,7 +46,7 @@ class SavedNewsViewController: UIViewController {
         if segue.identifier == "toDetailSavedVC" {
             
             let vc = segue.destination as? DetailWorldNewsViewController
-            
+            vc?.starButton.tintColor = .clear
             if let article = selectedArticle {
                 vc?.article = article
             }
@@ -71,6 +73,32 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let delete = UITableViewRowAction(style: .destructive, title: "delete") { [weak self] (action, indexPath) in
+//            
+//            guard let self = self else { return }
+//            
+//            let article = self.savedNews[indexPath.row]
+//            
+//            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+//            
+//            StorageManager.deleteArticle(article)
+//
+//        }
+//
+//        return [delete]
+//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let article = savedNews[indexPath.row]
+                try! realm.write {
+                    realm.delete(article)
+                }
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let article = savedNews[indexPath.row]

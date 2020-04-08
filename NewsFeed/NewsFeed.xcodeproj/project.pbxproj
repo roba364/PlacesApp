@@ -25,6 +25,7 @@
 		A493768E243B61D0000368F1 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493768D243B61D0000368F1 /* StorageManager.swift */; };
 		A4937690243B679F000368F1 /* SavedNewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493768F243B679F000368F1 /* SavedNewsList.swift */; };
 		A4937692243C53B9000368F1 /* SavedNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937691243C53B8000368F1 /* SavedNewsTableViewCell.swift */; };
+		A4937694243DE141000368F1 /* ConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937693243DE141000368F1 /* ConnectManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		A493768D243B61D0000368F1 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A493768F243B679F000368F1 /* SavedNewsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsList.swift; sourceTree = "<group>"; };
 		A4937691243C53B8000368F1 /* SavedNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsTableViewCell.swift; sourceTree = "<group>"; };
+		A4937693243DE141000368F1 /* ConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectManager.swift; sourceTree = "<group>"; };
 		F43251D5979EB6D9679F699F /* Pods_NewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				A49376762437556D000368F1 /* NetworkManager.swift */,
+				A4937693243DE141000368F1 /* ConnectManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				A49376772437556D000368F1 /* NetworkManager.swift in Sources */,
 				A49376842437700B000368F1 /* WorldFeedTableViewCell.swift in Sources */,
 				A493768824386FF3000368F1 /* Extensions.swift in Sources */,
+				A4937694243DE141000368F1 /* ConnectManager.swift in Sources */,
 				A493767924376076000368F1 /* News.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

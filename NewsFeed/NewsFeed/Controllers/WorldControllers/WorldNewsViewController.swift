@@ -22,24 +22,23 @@ class WorldNewsViewController: UIViewController {
     var news = [News]()
     var selectedArticle: News?
     
+    var checkConnectionTimer: Timer?
+    var newsFeedTimer: Timer?
+    
     //MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        setupRefreshControl()
+        getNewsFeed()
+        
+        checkConnectionTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkInternetConnectionAfter5), userInfo: nil, repeats: true)
 
-        networkManager.getFeed(url: WORLDWIDE_URL) { (news) in
-            
-            self.news = news
-            self.tableView.reloadData()
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,17 +47,58 @@ class WorldNewsViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    //MARK: - Setup UI
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshByPull), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
     //MARK: - Actions
     
-    @objc func refresh(_ sender: Any) {
+    @objc func checkInternetConnectionAfter5() {
         
-        networkManager.getFeed(url: WORLDWIDE_URL) { (news) in
+        if Connectivity.isConnectedToInternet {
+            
+            print("connected")
+            cancelTimer()
+        } else {
+            print("no connected")
+            
+            newsFeedTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(getNewsFeed), userInfo: nil, repeats: false)
+            
+        }
+    }
+    
+    @objc func refreshByPull(_ sender: Any) {
+
+        getNewsFeed()
+
+        refreshControl.endRefreshing()
+    }
+    
+    //MARK: - Timer
+    
+    private func cancelTimer() {
+      newsFeedTimer?.invalidate()
+      newsFeedTimer = nil
+    }
+    
+    //MARK: - Download data
+    
+    @objc private func getNewsFeed() {
+        
+        networkManager.getFeed(url: WORLDWIDE_URL) { [weak self] (news) in
+            
+            guard let self = self else { return }
             
             self.news = news
             self.tableView.reloadData()
+
+            print("got feed")
         }
-        
-        refreshControl.endRefreshing()
     }
     
     //MARK: - Navigation
@@ -74,6 +114,7 @@ class WorldNewsViewController: UIViewController {
             }
         }
     }
+    
     
 }
 

@@ -8,4 +8,5 @@ target 'NewsFeed' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Kingfisher', '~> 5.13'
   pod 'RealmSwift'
+  pod 'Alamofire', '~> 4.9.1'
 end
