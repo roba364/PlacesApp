@@ -29,6 +29,7 @@ class SavedNewsTableViewCell: UITableViewCell {
         let processor = RoundCornerImageProcessor(cornerRadius: 20)
         articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
         
+        
         if let articleDate = article.date {
             dateLabel.text = updateISO8601(toString: articleDate, news: article)
         }
