@@ -9,4 +9,7 @@ target 'NewsFeed' do
   pod 'Kingfisher', '~> 5.13'
   pod 'RealmSwift'
   pod 'Alamofire', '~> 4.9.1'
+  pod 'Gifu'
+  pod 'TinyConstraints', '~> 4.0'
+  
 end

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.9.1)
+  - Gifu (3.2.0)
   - Kingfisher (5.13.0):
     - Kingfisher/Core (= 5.13.0)
   - Kingfisher/Core (5.13.0)
@@ -9,28 +10,35 @@ PODS:
   - RealmSwift (4.3.2):
     - Realm (= 4.3.2)
   - SwiftyJSON (4.3.0)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
+  - Gifu
   - Kingfisher (~> 5.13)
   - RealmSwift
   - SwiftyJSON (~> 4.0)
+  - TinyConstraints (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Gifu
     - Kingfisher
     - Realm
     - RealmSwift
     - SwiftyJSON
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Gifu: 7bcb6427457d85e0b4dff5a84ec5947ac19a93ea
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
   RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: a3319c7d3f7d46f1e54e9110ab9388e82389720d
+PODFILE CHECKSUM: 725a72cc275a9250fee791027d5559d8b39480d9
 
 COCOAPODS: 1.8.4

@@ -14,7 +14,7 @@ class NetworkManager {
     
 //    var posts = [News]()
     
-    func getFeed(url: String, completion: @escaping (List<News>) -> Void) {
+    func getFeed(url: String) {
         
         guard let url = URL(string: url) else { return }
         
@@ -64,7 +64,7 @@ class NetworkManager {
                     
                     }
 //                    StorageManager.saveNews(posts)
-                completion(posts)
+
                     
                 }
                 

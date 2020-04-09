@@ -20,14 +20,19 @@ class WorldNewsViewController: UIViewController {
     var networkManager = NetworkManager()
     var refreshControl: UIRefreshControl!
     
-    var savedNews = realm.objects(News.self)
-    var news = List<News>()
+    var news = realm.objects(News.self)
     var selectedArticle: News?
     
     var checkConnectionTimer: Timer?
     var newsFeedTimer: Timer?
     
     //MARK: - Lifecycle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        getNewsFeed()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +41,6 @@ class WorldNewsViewController: UIViewController {
         tableView.dataSource = self
         
         setupRefreshControl()
-        getNewsFeed()
         
         checkConnectionTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkInternetConnectionAfter5), userInfo: nil, repeats: true)
 
@@ -47,10 +51,8 @@ class WorldNewsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        
-        if savedNews.count > 0 {
-            
-        }
+
+        tableView.reloadData()
     }
     
     //MARK: - Setup UI
@@ -96,15 +98,7 @@ class WorldNewsViewController: UIViewController {
     
     @objc private func getNewsFeed() {
         
-        networkManager.getFeed(url: WORLDWIDE_URL) { [weak self] (news) in
-            
-            guard let self = self else { return }
-            
-            self.news = news
-            self.tableView.reloadData()
-
-            print("got feed")
-        }
+        networkManager.getFeed(url: WORLDWIDE_URL)
     }
     
     //MARK: - Navigation
@@ -128,20 +122,16 @@ extension WorldNewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return savedNews.count != 0 ? savedNews.count : news.count
+        return news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? WorldFeedTableViewCell else { fatalError() }
         
-        if savedNews.count != 0 {
-            let savedArticle = savedNews[indexPath.row]
-            cell.update(article: savedArticle)
-        } else {
-            let article = news[indexPath.row]
-            cell.update(article: article)
-        }
+        
+        let article = news[indexPath.row]
+        cell.update(article: article)
         
         return cell
     }

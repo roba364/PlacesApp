@@ -26,6 +26,10 @@
 		A4937690243B679F000368F1 /* SavedNewsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A493768F243B679F000368F1 /* SavedNewsList.swift */; };
 		A4937692243C53B9000368F1 /* SavedNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937691243C53B8000368F1 /* SavedNewsTableViewCell.swift */; };
 		A4937694243DE141000368F1 /* ConnectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937693243DE141000368F1 /* ConnectManager.swift */; };
+		A4937696243F5296000368F1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4937695243F5296000368F1 /* StartViewController.swift */; };
+		A493769A243F609B000368F1 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = A4937699243F609B000368F1 /* loading.gif */; };
+		A493769C243F6140000368F1 /* loading1.gif in Resources */ = {isa = PBXBuildFile; fileRef = A493769B243F613F000368F1 /* loading1.gif */; };
+		A493769E243F61C9000368F1 /* loading2.gif in Resources */ = {isa = PBXBuildFile; fileRef = A493769D243F61C9000368F1 /* loading2.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +55,10 @@
 		A493768F243B679F000368F1 /* SavedNewsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsList.swift; sourceTree = "<group>"; };
 		A4937691243C53B8000368F1 /* SavedNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsTableViewCell.swift; sourceTree = "<group>"; };
 		A4937693243DE141000368F1 /* ConnectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectManager.swift; sourceTree = "<group>"; };
+		A4937695243F5296000368F1 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		A4937699243F609B000368F1 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		A493769B243F613F000368F1 /* loading1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading1.gif; sourceTree = "<group>"; };
+		A493769D243F61C9000368F1 /* loading2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading2.gif; sourceTree = "<group>"; };
 		F43251D5979EB6D9679F699F /* Pods_NewsFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +111,9 @@
 				A493767A243768CC000368F1 /* Utils */,
 				A493767D2437690F000368F1 /* Supporting files */,
 				A493766A24374363000368F1 /* Info.plist */,
+				A4937699243F609B000368F1 /* loading.gif */,
+				A493769B243F613F000368F1 /* loading1.gif */,
+				A493769D243F61C9000368F1 /* loading2.gif */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -128,8 +139,9 @@
 		A493767C243768F9000368F1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A493768224376A0F000368F1 /* LocalControllers */,
+				A493769F243F6271000368F1 /* StartingViewController */,
 				A493768124376A01000368F1 /* WorldControllers */,
+				A493768224376A0F000368F1 /* LocalControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,6 +209,14 @@
 				A493768D243B61D0000368F1 /* StorageManager.swift */,
 			);
 			path = StorageManager;
+			sourceTree = "<group>";
+		};
+		A493769F243F6271000368F1 /* StartingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4937695243F5296000368F1 /* StartViewController.swift */,
+			);
+			path = StartingViewController;
 			sourceTree = "<group>";
 		};
 		DE68CC45C0517C9516649ACC /* Frameworks */ = {
@@ -268,7 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A493766924374363000368F1 /* LaunchScreen.storyboard in Resources */,
+				A493769A243F609B000368F1 /* loading.gif in Resources */,
 				A493766624374363000368F1 /* Assets.xcassets in Resources */,
+				A493769C243F6140000368F1 /* loading1.gif in Resources */,
+				A493769E243F61C9000368F1 /* loading2.gif in Resources */,
 				A493766124374361000368F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A49376712437455F000368F1 /* WorldNewsViewController.swift in Sources */,
+				A4937696243F5296000368F1 /* StartViewController.swift in Sources */,
 				A493765A24374361000368F1 /* AppDelegate.swift in Sources */,
 				A4937675243750C7000368F1 /* Globals.swift in Sources */,
 				A493768E243B61D0000368F1 /* StorageManager.swift in Sources */,
