@@ -32,12 +32,19 @@ class DetailWorldNewsViewController: UIViewController {
         
         setupUI()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         let predicate = NSPredicate(format: "title = %@", article.title!)
         let result = realm.objects(News.self).filter(predicate)
         
         if result.count > 0 {
             starButton.image = UIImage(named: "filledStar")
         }
+        
+        
     }
     
     //MARK: - Setup UI
@@ -47,14 +54,15 @@ class DetailWorldNewsViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         guard
-            let articleUrlToImage = article.urlToImage,
-            let urlImage = URL(string: articleUrlToImage)
-            else { return }
+            let articleUrlToImage = article.urlToImage else {
+                articleImageView.image = UIImage(named: "nophoto")
+                return }
         
-        
-        articleImageView.kf.indicatorType = .activity
-        let processor = RoundCornerImageProcessor(cornerRadius: 20)
-        articleImageView.kf.setImage(with: urlImage, options: [.processor(processor)])
+        if let articleImage = URL(string: articleUrlToImage) {
+            articleImageView.kf.indicatorType = .activity
+            let processor = RoundCornerImageProcessor(cornerRadius: 20)
+            articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
+        }
         
         sourceNameLabel.text = article.sourceName
         dateLabel.text = article.date
@@ -101,6 +109,7 @@ class DetailWorldNewsViewController: UIViewController {
         
         guard let article = article else { return }
         
+        starButton.image = UIImage(named: "filledStar")
         article.isSaved = true
         StorageManager.saveArticle(article)
         

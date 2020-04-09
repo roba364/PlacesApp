@@ -45,6 +45,8 @@ class WorldNewsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        tableView.reloadData()
     }
     
     //MARK: - Setup UI
@@ -114,8 +116,6 @@ class WorldNewsViewController: UIViewController {
             }
         }
     }
-    
-    
 }
 
     //MARK: - Extension

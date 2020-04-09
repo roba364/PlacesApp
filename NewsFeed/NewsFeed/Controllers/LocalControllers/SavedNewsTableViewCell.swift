@@ -20,14 +20,17 @@ class SavedNewsTableViewCell: UITableViewCell {
     func update(article: News) {
         
         guard
-            let urlImage = article.urlToImage,
-            let articleDate = article.date
-        else { return }
-
-        if let articleImage = URL(string: urlImage) {
-            articleImageView.kf.indicatorType = .activity
-            let processor = RoundCornerImageProcessor(cornerRadius: 20)
-            articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
+            let articleUrlToImage = article.urlToImage else {
+                articleImageView.image = UIImage(named: "nophoto")
+                return }
+        
+        let articleImage = URL(string: articleUrlToImage)
+        articleImageView.kf.indicatorType = .activity
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+        articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
+        
+        if let articleDate = article.date {
+            dateLabel.text = updateISO8601(toString: articleDate, news: article)
         }
 
         articleImageView.layer.cornerRadius = 10
@@ -35,7 +38,7 @@ class SavedNewsTableViewCell: UITableViewCell {
         inCellView.layer.masksToBounds = true
 
         titleLabel.text = article.title
-        dateLabel.text = updateISO8601(toString: articleDate, news: article)
+        
         sourceNameLabel.text = article.sourceName
     }
 }

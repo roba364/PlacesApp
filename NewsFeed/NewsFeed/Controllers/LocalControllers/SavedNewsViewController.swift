@@ -37,6 +37,8 @@ class SavedNewsViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         
+        tableView.reloadData()
+        
     }
     
     //MARK: - Navigation
@@ -72,22 +74,7 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let delete = UITableViewRowAction(style: .destructive, title: "delete") { [weak self] (action, indexPath) in
-//            
-//            guard let self = self else { return }
-//            
-//            let article = self.savedNews[indexPath.row]
-//            
-//            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-//            
-//            StorageManager.deleteArticle(article)
-//
-//        }
-//
-//        return [delete]
-//    }
+
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         

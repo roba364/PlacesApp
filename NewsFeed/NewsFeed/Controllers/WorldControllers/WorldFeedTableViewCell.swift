@@ -20,14 +20,19 @@ class WorldFeedTableViewCell: UITableViewCell {
     func update(article: News) {
         
         guard
-            let urlImage = article.urlToImage,
-            let articleDate = article.date
-        else { return }
+            let urlImage = article.urlToImage
+            else { articleImageView.image = UIImage(named: "nophoto")
+                return }
+            
         
         if let articleImage = URL(string: urlImage) {
             articleImageView.kf.indicatorType = .activity
             let processor = RoundCornerImageProcessor(cornerRadius: 20)
             articleImageView.kf.setImage(with: articleImage, options: [.processor(processor)])
+        }
+        
+        if let articleDate = article.date {
+            dateLabel.text = updateISO8601(toString: articleDate, news: article)
         }
         
         articleImageView.layer.cornerRadius = 10
@@ -37,7 +42,7 @@ class WorldFeedTableViewCell: UITableViewCell {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
         titleLabel.text = article.title
-        dateLabel.text = updateISO8601(toString: articleDate, news: article)
+        
         sourceNameLabel.text = article.sourceName
     }
 }
