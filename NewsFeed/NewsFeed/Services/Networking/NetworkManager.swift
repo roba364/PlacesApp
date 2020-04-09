@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
 import SwiftyJSON
 
 class NetworkManager {
     
-    var posts = [News]()
+//    var posts = [News]()
     
-    func getFeed(url: String, completion: @escaping ([News]) -> Void) {
+    func getFeed(url: String, completion: @escaping (List<News>) -> Void) {
         
         guard let url = URL(string: url) else { return }
         
@@ -31,6 +32,8 @@ class NetworkManager {
             
             let json = try! JSON(data: data)
             
+            let posts = List<News>()
+            
             for i in json["articles"] {
                 
                 let author = i.1["author"].stringValue
@@ -42,13 +45,31 @@ class NetworkManager {
                 let content = i.1["content"].stringValue
                 let sourceID = i.1["source"]["id"].stringValue
                 let sourceName = i.1["source"]["name"].stringValue
-                self.posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
                 
                 DispatchQueue.main.async {
-                    completion(self.posts)
+                    
+                    let predicate = NSPredicate(format: "title = %@", title)
+                    let results = realm.objects(News.self).filter(predicate)
+                    
+                    if results.isEmpty {
+                        posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
+                        StorageManager.saveNews(posts)
+                    } else {
+                        for result in results {
+                            
+                            if result.title != title {
+                            posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
+                            }
+                    }
+                    
+                    }
+//                    StorageManager.saveNews(posts)
+                completion(posts)
+                    
                 }
+                
+                
             }
-            
         }.resume()
     }
 }

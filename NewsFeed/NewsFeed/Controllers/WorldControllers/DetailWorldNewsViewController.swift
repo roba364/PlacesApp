@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 import Kingfisher
 
 class DetailWorldNewsViewController: UIViewController {
@@ -37,13 +38,15 @@ class DetailWorldNewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let predicate = NSPredicate(format: "title = %@", article.title!)
-        let result = realm.objects(News.self).filter(predicate)
+        let results = realm.objects(News.self).filter("isSaved = true")
         
-        if result.count > 0 {
-            starButton.image = UIImage(named: "filledStar")
+        for result in results {
+            if result.title == article.title {
+                starButton.image = UIImage(named: "filledStar")
+            } else {
+                starButton.image = UIImage(named: "emptyStar")
+            }
         }
-        
         
     }
     
@@ -72,7 +75,7 @@ class DetailWorldNewsViewController: UIViewController {
         
         setupDateEUFormat()
         setupTapGesture()
-        checkSavedArticleAndSetupStar()
+
     }
     
     private func setupTapGesture() {
@@ -91,17 +94,6 @@ class DetailWorldNewsViewController: UIViewController {
     
     //MARK: - Check articles
     
-    private func checkSavedArticleAndSetupStar() {
-        
-        guard let articleTitle = article.title else { return }
-        
-        let predicate = NSPredicate(format: "title = %@", articleTitle)
-        let result = realm.objects(News.self).filter(predicate)
-        
-        if result.count > 0 {
-            starButton.image = UIImage(named: "filledStar")
-        }
-    }
     
     //MARK: - Actions
     
@@ -110,9 +102,14 @@ class DetailWorldNewsViewController: UIViewController {
         guard let article = article else { return }
         
         starButton.image = UIImage(named: "filledStar")
-        article.isSaved = true
-        StorageManager.saveArticle(article)
-        
+        DispatchQueue.main.async {
+            
+                let predicate = NSPredicate(format: "title == %@", article.title!)
+                let article = realm.objects(News.self).filter(predicate).first
+                try! realm.write {
+                    article?.isSaved = true
+                }
+        }
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {

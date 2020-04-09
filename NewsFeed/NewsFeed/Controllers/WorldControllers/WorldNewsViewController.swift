@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WorldNewsViewController: UIViewController {
     
@@ -19,7 +20,8 @@ class WorldNewsViewController: UIViewController {
     var networkManager = NetworkManager()
     var refreshControl: UIRefreshControl!
     
-    var news = [News]()
+    var savedNews = realm.objects(News.self)
+    var news = List<News>()
     var selectedArticle: News?
     
     var checkConnectionTimer: Timer?
@@ -46,7 +48,9 @@ class WorldNewsViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         
-        tableView.reloadData()
+        if savedNews.count > 0 {
+            
+        }
     }
     
     //MARK: - Setup UI
@@ -124,16 +128,20 @@ extension WorldNewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return news.count 
+        return savedNews.count != 0 ? savedNews.count : news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? WorldFeedTableViewCell else { fatalError() }
         
-        let article = news[indexPath.row]
-        
-        cell.update(article: article)
+        if savedNews.count != 0 {
+            let savedArticle = savedNews[indexPath.row]
+            cell.update(article: savedArticle)
+        } else {
+            let article = news[indexPath.row]
+            cell.update(article: article)
+        }
         
         return cell
     }

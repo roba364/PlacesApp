@@ -80,12 +80,15 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete {
             let article = savedNews[indexPath.row]
-                try! realm.write {
-                    realm.delete(article)
-                }
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+            let predicate = NSPredicate(format: "title == %@", article.title!)
+            let object = realm.objects(News.self).filter(predicate).first
+            try! realm.write {
+                object?.isSaved = false
+            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let article = savedNews[indexPath.row]

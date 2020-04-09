@@ -21,6 +21,13 @@ class StorageManager {
         }
     }
     
+    static func saveNews(_ news: List<News>) {
+        
+        try! realm.write {
+            realm.add(news)
+        }
+    }
+    
     //MARK: - Delete data
     
     static func deleteArticle(_ article: News) {
