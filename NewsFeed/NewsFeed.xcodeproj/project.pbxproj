@@ -141,7 +141,7 @@
 			children = (
 				A493769F243F6271000368F1 /* StartingViewController */,
 				A493768124376A01000368F1 /* WorldControllers */,
-				A493768224376A0F000368F1 /* LocalControllers */,
+				A493768224376A0F000368F1 /* SavedContollers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,13 +185,13 @@
 			path = WorldControllers;
 			sourceTree = "<group>";
 		};
-		A493768224376A0F000368F1 /* LocalControllers */ = {
+		A493768224376A0F000368F1 /* SavedContollers */ = {
 			isa = PBXGroup;
 			children = (
 				A49376722437456F000368F1 /* SavedNewsViewController.swift */,
 				A4937691243C53B8000368F1 /* SavedNewsTableViewCell.swift */,
 			);
-			path = LocalControllers;
+			path = SavedContollers;
 			sourceTree = "<group>";
 		};
 		A493768B243B618B000368F1 /* Services */ = {

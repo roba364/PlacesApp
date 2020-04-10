@@ -42,7 +42,7 @@ class WorldNewsViewController: UIViewController {
         
         setupRefreshControl()
         
-        checkConnectionTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkInternetConnectionAfter5), userInfo: nil, repeats: true)
+        checkConnectionTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(checkInternetConnectionAfter5), userInfo: nil, repeats: true)
 
         
     }
@@ -70,12 +70,10 @@ class WorldNewsViewController: UIViewController {
         
         if Connectivity.isConnectedToInternet {
             
-            print("connected")
             cancelTimer()
         } else {
-            print("no connected")
-            
-            newsFeedTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(getNewsFeed), userInfo: nil, repeats: false)
+
+            newsFeedTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(getNewsFeed), userInfo: nil, repeats: false)
             
         }
     }
@@ -98,7 +96,10 @@ class WorldNewsViewController: UIViewController {
     
     @objc private func getNewsFeed() {
         
-        networkManager.getFeed(url: WORLDWIDE_URL)
+        networkManager.getFeed(url: WORLDWIDE_URL) { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: - Navigation

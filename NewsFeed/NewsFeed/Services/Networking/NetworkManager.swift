@@ -12,13 +12,11 @@ import SwiftyJSON
 
 class NetworkManager {
     
-//    var posts = [News]()
-    
-    func getFeed(url: String) {
+    func getFeed(url: String, completion: @escaping () -> ()) {
         
         guard let url = URL(string: url) else { return }
         
-        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error {
                 print(error.localizedDescription)
@@ -26,8 +24,7 @@ class NetworkManager {
             }
             
             guard
-                let data = data,
-                let self = self
+                let data = data
                 else { return }
             
             let json = try! JSON(data: data)
@@ -46,29 +43,27 @@ class NetworkManager {
                 let sourceID = i.1["source"]["id"].stringValue
                 let sourceName = i.1["source"]["name"].stringValue
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.sync {
                     
                     let predicate = NSPredicate(format: "title = %@", title)
                     let results = realm.objects(News.self).filter(predicate)
                     
                     if results.isEmpty {
-                        posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
+                        posts.insert(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName), at: 0)
                         StorageManager.saveNews(posts)
+                        completion()
                     } else {
                         for result in results {
                             
                             if result.title != title {
-                            posts.append(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName))
+                                posts.insert(News(author: author, title: title, desc: description, url: url, urlToImage: urlToImage, date: date, content: content, sourceID: sourceID, sourceName: sourceName), at: 0)
+                                StorageManager.saveNews(posts)
+                                completion()
                             }
+                        }
                     }
-                    
-                    }
-//                    StorageManager.saveNews(posts)
-
-                    
+                    //                    StorageManager.saveNews(posts)
                 }
-                
-                
             }
         }.resume()
     }

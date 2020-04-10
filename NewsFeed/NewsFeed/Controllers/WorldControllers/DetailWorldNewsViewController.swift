@@ -103,12 +103,14 @@ class DetailWorldNewsViewController: UIViewController {
         
         starButton.image = UIImage(named: "filledStar")
         DispatchQueue.main.async {
-            
-                let predicate = NSPredicate(format: "title == %@", article.title!)
+                
+            if let articleTitle = article.title {
+                let predicate = NSPredicate(format: "title == %@", articleTitle)
                 let article = realm.objects(News.self).filter(predicate).first
                 try! realm.write {
                     article?.isSaved = true
                 }
+            }
         }
     }
     

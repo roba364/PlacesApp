@@ -29,7 +29,6 @@ class SavedNewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +53,9 @@ class SavedNewsViewController: UIViewController {
             }
         }
     }
-
 }
+
+    //MARK: - Extensions
 
 extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -80,7 +80,8 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete {
             let article = savedNews[indexPath.row]
-            let predicate = NSPredicate(format: "title == %@", article.title!)
+            guard let articleTitle = article.title else { return }
+            let predicate = NSPredicate(format: "title == %@", articleTitle)
             let object = realm.objects(News.self).filter(predicate).first
             try! realm.write {
                 object?.isSaved = false

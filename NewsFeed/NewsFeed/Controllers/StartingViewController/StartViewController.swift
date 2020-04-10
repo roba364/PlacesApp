@@ -32,7 +32,9 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        networkManager.getFeed(url: WORLDWIDE_URL)
+        networkManager.getFeed(url: WORLDWIDE_URL) {
+            
+        }
         
         setupViews()
         
@@ -43,7 +45,7 @@ class StartViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         loadingGif.stopAnimatingGIF()
-        
+        cancelTimer()
     }
     
     //MARK: - Setup UI
@@ -67,6 +69,13 @@ class StartViewController: UIViewController {
     @objc private func goToTabbar() {
         
         performSegue(withIdentifier: "toTabbar", sender: nil)
+    }
+    
+    //MARK: - Helper
+    
+    private func cancelTimer() {
+      loadingTimer?.invalidate()
+      loadingTimer = nil
     }
 
 
